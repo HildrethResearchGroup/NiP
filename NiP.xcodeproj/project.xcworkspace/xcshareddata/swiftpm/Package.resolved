@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Socket",
+        "repositoryURL": "https://github.com/IBM-Swift/BlueSocket.git",
+        "state": {
+          "branch": null,
+          "revision": "c9894fd117457f1d006575fbfb2fdfd6f79eac03",
+          "version": "1.0.200"
+        }
+      },
+      {
+        "package": "XPSQ8Kit",
+        "repositoryURL": "https://github.com/HildrethResearchGroup/XPSQ8Kit.git",
+        "state": {
+          "branch": "newFunctions",
+          "revision": "e632be41ca2207da123147299753a8a1e3ee3f6e",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}
