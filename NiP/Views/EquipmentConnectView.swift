@@ -19,7 +19,7 @@ struct EquipmentConnectView: View {
                 Button(action: {self.stageGroupController.connectToEquipmentController()})
                     { Text("Connect") }.disabled(stageGroupController.connectedToController)
                 Text(stageGroupController.equipmentName)
-            }
+            }.padding()
         }
     }
     

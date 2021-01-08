@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		446A368425A8D6B100801A84 /* StagePositionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446A368325A8D6B100801A84 /* StagePositionView.swift */; };
+		446A368725A8DB0100801A84 /* NumbersOnly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446A368625A8DB0100801A84 /* NumbersOnly.swift */; };
 		C02729DB2592F68E00E61400 /* NiPApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02729DA2592F68E00E61400 /* NiPApp.swift */; };
 		C02729DD2592F68E00E61400 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02729DC2592F68E00E61400 /* ContentView.swift */; };
 		C02729DF2592F68E00E61400 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C02729DE2592F68E00E61400 /* Assets.xcassets */; };
@@ -22,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		446A368325A8D6B100801A84 /* StagePositionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StagePositionView.swift; sourceTree = "<group>"; };
+		446A368625A8DB0100801A84 /* NumbersOnly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumbersOnly.swift; sourceTree = "<group>"; };
 		C02729D72592F68E00E61400 /* NiP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NiP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C02729DA2592F68E00E61400 /* NiPApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NiPApp.swift; sourceTree = "<group>"; };
 		C02729DC2592F68E00E61400 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -105,6 +109,7 @@
 			children = (
 				C02729DC2592F68E00E61400 /* ContentView.swift */,
 				C0E16E4325A82F97004E12B5 /* EquipmentConnectView.swift */,
+				446A368325A8D6B100801A84 /* StagePositionView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -113,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				C0E16E3F25A8280F004E12B5 /* NotificationKeys.swift */,
+				446A368625A8DB0100801A84 /* NumbersOnly.swift */,
 			);
 			path = "Helper Files";
 			sourceTree = "<group>";
@@ -203,6 +209,8 @@
 			files = (
 				C0E16E4025A8280F004E12B5 /* NotificationKeys.swift in Sources */,
 				C0B06DBD25A6C1D1003F5AE4 /* StageController.swift in Sources */,
+				446A368425A8D6B100801A84 /* StagePositionView.swift in Sources */,
+				446A368725A8DB0100801A84 /* NumbersOnly.swift in Sources */,
 				C0E16E4825A83138004E12B5 /* Protocol_ConnectableEquipment.swift in Sources */,
 				C0E16E4425A82F97004E12B5 /* EquipmentConnectView.swift in Sources */,
 				C02729F22592F7CD00E61400 /* StageGroupController.swift in Sources */,
@@ -348,6 +356,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.HRG.NiP;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

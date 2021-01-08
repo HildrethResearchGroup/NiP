@@ -12,7 +12,10 @@ struct ContentView: View {
     
     
     var body: some View {
-        EquipmentConnectView(stageGroupController: stageGroupController)
+        VStack {
+            EquipmentConnectView(stageGroupController: stageGroupController)
+            StagePositionView(stageController: stageGroupController.x)
+        }
     }
     
     

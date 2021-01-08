@@ -9,7 +9,7 @@ import Foundation
 import Combine
 import XPSQ8Kit
 
-class StageController {
+class StageController: ObservableObject {
     let controller: XPSQ8Controller?
     let stageName:String
     let stage: Stage
