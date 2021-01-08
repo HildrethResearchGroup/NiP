@@ -17,6 +17,8 @@ class StageController: ObservableObject {
     var stageGroup: StageGroup? {
         get { return stageGroupController.stageGroup }
     }
+    
+    let defaultStageSGammaParameters: StageSGammaParameters = .largeDisplacement
 
     
     init?(stageGroupController: StageGroupController, andName stageNameIn: String, inController: XPSQ8Controller?) {
@@ -27,6 +29,8 @@ class StageController: ObservableObject {
         stage = Stage(stageGroup: tempStageGroup, stageName: stageNameIn)
         
         self.stageGroupController = stageGroupController
+        
+        self.setSGammaParameters(defaultStageSGammaParameters)
     }
 }
 
@@ -87,6 +91,29 @@ extension StageController {
             }
         }
     } // END: moveAbsolute
+    
+    
+    
+    
+    func setSGammaParameters(_ parameters: StageSGammaParameters) {
+        self.setSGammaParameters(parameters.sGammaParameters)
+    }
+    
+    
+    func setSGammaParameters(_ parameters: SGammaParameters) {
+        controller?.dispatchQueue.async {
+            let vel = parameters.velocity
+            let acc = parameters.acceleration
+            let min = parameters.minimumTjerkTime
+            let max = parameters.maximumTjerkTime
+
+            do {
+                try self.stage.setSGammaParameters(velocity: vel, acceleration: acc, minimumTjerkTime: min, maximumTjerkTime: max)
+            } catch {
+                print(error)
+            }
+        }
+    }
 }
 
 
