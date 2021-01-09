@@ -18,6 +18,18 @@ class StageController: ObservableObject {
         get { return stageGroupController.stageGroup }
     }
     
+    var subscribers: [AnyCancellable] = []
+    
+    var monitorCurrentPosition = false {
+        didSet {
+            if monitorCurrentPosition == true && oldValue == false {
+                updateCurrentPositionContinuously()
+            }
+        }
+    }
+    var timeLengthToUpdatePosition = 0.25
+    @Published var currentPosition = 0.0
+    
     let defaultStageSGammaParameters: StageSGammaParameters = .largeDisplacement
 
     
@@ -31,6 +43,8 @@ class StageController: ObservableObject {
         self.stageGroupController = stageGroupController
         
         self.setSGammaParameters(defaultStageSGammaParameters)
+        
+        monitorCurrentPosition = true
     }
 }
 
@@ -113,6 +127,47 @@ extension StageController {
                 print(error)
             }
         }
+    }
+}
+
+// MARK: - Monitoring Stages
+extension StageController {
+    enum ControllerError: Error {
+        case communicationError
+    }
+    
+    func getCurrentPosition() -> Future<Double, Error> {
+        let future = Future<Double, Error> { promise in
+            self.controller?.dispatchQueue.async {
+                do {
+                    if let currentPosition = try self.stage.getCurrentPosition() {
+                        promise(Result.success(currentPosition))
+                    } else {
+                        promise(Result.failure(ControllerError.communicationError))
+                    }
+                } catch {
+                    promise(Result.failure(error))
+                }
+            }
+        }
+        return future
+    }
+    
+    
+    func updateCurrentPositionContinuously() {
+        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true, block: { [self]timer  in
+            let future = self.getCurrentPosition()
+            let cancelable = future.replaceError(with: 0.0)
+                .sink(receiveValue: { value in
+                    currentPosition = value
+                })
+            
+            if monitorCurrentPosition == false {
+                timer.invalidate()
+                cancelable.cancel()
+                print("done")
+            }
+        })
     }
 }
 

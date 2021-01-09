@@ -81,9 +81,7 @@ extension StageGroupController {
 
 // MARK: - Getting Data
 extension StageGroupController {
-    enum ControllerError: Error {
-        case communicationError
-    }
+    
     
     /**
      Returns a VelocityAndAcceleration Struct containing the current velocity and acceration of the specified stage.
@@ -127,22 +125,7 @@ extension StageGroupController {
     }// END:  jogGetCurrent
     
     
-    func getCurrentPosition(_ stage: Stage) -> Future<Double, Error> {
-        let future = Future<Double, Error> { promise in
-            self.controller?.dispatchQueue.async {
-                do {
-                    if let currentPosition = try stage.getCurrentPosition() {
-                        promise(Result.success(currentPosition))
-                    } else {
-                        promise(Result.failure(ControllerError.communicationError))
-                    }
-                } catch {
-                    promise(Result.failure(error))
-                }
-            }
-        }
-        return future
-    }
+    
     
     
 } // END:  Getting Data Extension

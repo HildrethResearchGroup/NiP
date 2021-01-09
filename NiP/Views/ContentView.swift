@@ -12,10 +12,14 @@ struct ContentView: View {
     
     
     var body: some View {
-        VStack {
+        VStack(alignment: .leading) {
             EquipmentConnectView(stageGroupController: stageGroupController)
-            StagePositionView(stageController: stageGroupController.x)
+            StagePositionView(stageName: "X",stageController: stageGroupController.x)
+            StagePositionView(stageName: "Y", stageController: stageGroupController.y)
+            StagePositionView(stageName: "Z", stageController: stageGroupController.z)
         }
+        .fixedSize()
+        .padding()
     }
     
     
