@@ -10,7 +10,7 @@ import Combine
 
 struct StagePositionView: View {
     let stageName:String
-    @ObservedObject var stageController: StageController?
+    @ObservedObject var stageController: StageController
     
     @State var test = 0.0
     
@@ -19,11 +19,11 @@ struct StagePositionView: View {
     var body: some View {
         HStack {
             Text(stageName + ":")
-            Text(self.stageController?.currentPositionString ?? "Nothing")
+            Text(self.stageController.currentPositionString)
             Button(action:{
                 //print("Target Displacement = \(targetDisplacement)")
                 print("Target Displacement = \(test)")
-                stageController?.moveRelative(targetDisplacement: test)
+                stageController.moveRelative(targetDisplacement: test)
             })
             {
                 Text("Jog")

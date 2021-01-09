@@ -34,14 +34,15 @@ class StageGroupController: ObservableObject, ConnectableEquipment {
     @Published var connectedToController = false
     
     var stageGroup: StageGroup?
-    var x: StageController?
-    var y: StageController?
-    var z: StageController?
-    var stageControllers: [StageController?] = []
+    lazy var x:StageController = StageController(stageGroupController: nil, andName: "X", inController: nil)
+    lazy var y = StageController(stageGroupController: nil, andName: "Y", inController: nil)
+    lazy var z = StageController(stageGroupController: nil, andName: "Z", inController: nil)
+    var stageControllers: [StageController] = []
     
     
     init() {
         dispatchQueue = DispatchQueue(label: identifier, qos: .userInitiated)
+        
     } // END: init()
     
     
@@ -56,11 +57,9 @@ class StageGroupController: ObservableObject, ConnectableEquipment {
     */
     private func createStages() {
         stageGroup = StageGroup(controller: controller, stageGroupName: "M")
-        x =  StageController(stageGroupController: self, andName: "X", inController: controller)
-        y =  StageController(stageGroupController: self, andName: "Y", inController: controller)
-        z =  StageController(stageGroupController: self, andName: "Z", inController: controller)
-        
-        stageControllers = [x, y, z]
+        self.x =  StageController(stageGroupController: self, andName: "X", inController: controller)
+        self.y =  StageController(stageGroupController: self, andName: "Y", inController: controller)
+        self.z =  StageController(stageGroupController: self, andName: "Z", inController: controller)
     }
 }
 

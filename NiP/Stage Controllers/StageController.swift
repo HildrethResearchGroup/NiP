@@ -12,10 +12,10 @@ import XPSQ8Kit
 class StageController: ObservableObject {
     let controller: XPSQ8Controller?
     let stageName:String
-    let stage: Stage
-    let stageGroupController: StageGroupController
+    let stage: Stage?
+    let stageGroupController: StageGroupController?
     var stageGroup: StageGroup? {
-        get { return stageGroupController.stageGroup }
+        get { return stageGroupController?.stageGroup }
     }
     
     var subscribers = Set<AnyCancellable>()
@@ -59,13 +59,13 @@ class StageController: ObservableObject {
     let defaultStageSGammaParameters: StageSGammaParameters = .largeDisplacement
 
     
-    init?(stageGroupController: StageGroupController, andName stageNameIn: String, inController: XPSQ8Controller?) {
+    init(stageGroupController: StageGroupController?, andName stageNameIn: String, inController: XPSQ8Controller?) {
         controller = inController
         stageName = stageNameIn
         
-        guard let tempStageGroup = stageGroupController.stageGroup else {return nil}
-        stage = Stage(stageGroup: tempStageGroup, stageName: stageNameIn)
-        
+        if let tempStageGroup = stageGroupController?.stageGroup {
+            stage = Stage(stageGroup: tempStageGroup, stageName: stageNameIn)
+        } else {stage = nil}
         self.stageGroupController = stageGroupController
         
         self.setSGammaParameters(defaultStageSGammaParameters)
@@ -97,7 +97,7 @@ extension StageController {
         controller?.dispatchQueue.async {
             //stage.moveRelative(targetDisplacement: targetDisplacement)
             do {
-                try self.stage.moveRelative(targetDisplacement: targetDisplacement)
+                try self.stage?.moveRelative(targetDisplacement: targetDisplacement)
             } catch {
                 print(error)
             }
@@ -126,7 +126,7 @@ extension StageController {
         controller?.dispatchQueue.async {
             //stage.moveRelative(targetDisplacement: targetDisplacement)
             do {
-                try self.stage.moveAbsolute(toLocation: toLocation)
+                try self.stage?.moveAbsolute(toLocation: toLocation)
             } catch {
                 print(error)
             }
@@ -149,7 +149,7 @@ extension StageController {
             let max = parameters.maximumTjerkTime
 
             do {
-                try self.stage.setSGammaParameters(velocity: vel, acceleration: acc, minimumTjerkTime: min, maximumTjerkTime: max)
+                try self.stage?.setSGammaParameters(velocity: vel, acceleration: acc, minimumTjerkTime: min, maximumTjerkTime: max)
             } catch {
                 print(error)
             }
@@ -167,7 +167,7 @@ extension StageController {
         let future = Future<Double, Error> { promise in
             self.controller?.dispatchQueue.async {
                 do {
-                    if let currentPosition = try self.stage.getCurrentPosition() {
+                    if let currentPosition = try self.stage?.getCurrentPosition() {
                         print("currentPosition in Future = \(currentPosition)")
                         promise(Result.success(currentPosition))
                     } else {
