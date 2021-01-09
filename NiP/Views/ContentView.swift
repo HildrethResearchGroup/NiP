@@ -15,8 +15,8 @@ struct ContentView: View {
         VStack(alignment: .leading) {
             EquipmentConnectView(stageGroupController: stageGroupController)
             StagePositionView(stageName: "X",stageController: stageGroupController.x)
-            //StagePositionView(stageName: "Y", stageController: stageGroupController.y)
-            //StagePositionView(stageName: "Z", stageController: stageGroupController.z)
+            StagePositionView(stageName: "Y", stageController: stageGroupController.y)
+            StagePositionView(stageName: "Z", stageController: stageGroupController.z)
         }
         .fixedSize()
         .padding()

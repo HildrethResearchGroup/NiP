@@ -20,15 +20,15 @@ struct StagePositionView: View {
         HStack {
             Text(stageName + ":")
             Text(self.stageController.currentPositionString)
+                .frame(minWidth: 60, maxWidth: 60, alignment: .leading)
             Button(action:{
-                //print("Target Displacement = \(targetDisplacement)")
-                print("Target Displacement = \(test)")
                 stageController.moveRelative(targetDisplacement: test)
             })
             {
                 Text("Jog")
             }
             TextField("-10.00", value: $test, formatter: configureFormatter())
+                .frame(minWidth: 80, maxWidth: 80, alignment: .center)
         }
         
     }

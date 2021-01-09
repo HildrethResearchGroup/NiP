@@ -22,7 +22,6 @@ class StageController: ObservableObject {
     
     var monitorCurrentPosition = false {
         didSet {
-            print("monitorCurrentPosition = \(monitorCurrentPosition)")
             if monitorCurrentPosition == true && oldValue == false {
                 updateCurrentPositionContinuously()
             }
@@ -31,18 +30,13 @@ class StageController: ObservableObject {
     var timeLengthToUpdatePosition = 0.25
     @Published var currentPosition = 0.0 {
         didSet {
-            print("@Published var currentPosition = \(currentPosition)")
             if oldValue != currentPosition {
                 let formatter = self.defaultNumberToStringFormatter()
                 currentPositionString = String(double: currentPosition, withFormatter: formatter)
             }
         }
     }
-    @Published var currentPositionString:String = "??.???" {
-        didSet {
-            print("currentPositionString = \(currentPositionString)")
-        }
-    }
+    @Published var currentPositionString:String = "??.???"
     
 
     func defaultNumberToStringFormatter() -> NumberFormatter {
@@ -168,7 +162,6 @@ extension StageController {
             self.controller?.dispatchQueue.async {
                 do {
                     if let currentPosition = try self.stage?.getCurrentPosition() {
-                        print("currentPosition in Future = \(currentPosition)")
                         promise(Result.success(currentPosition))
                     } else {
                         promise(Result.failure(ControllerError.communicationError))
@@ -183,13 +176,12 @@ extension StageController {
     
     
     func updateCurrentPositionContinuously() {
-        print("updateCurrentPositionContinuously")
         Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true, block: { [self]timer  in
             let future = self.getCurrentPosition()
             future.replaceError(with: -123.456)
             //future.replaceError(with: 0.0)
+                .receive(on: DispatchQueue.main)
                 .sink(receiveValue: { value in
-                    print("currentPosition in sink = \(value)")
                     self.currentPosition = value
                 })
                 .store(in: &subscribers)
