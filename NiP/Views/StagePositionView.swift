@@ -6,38 +6,29 @@
 //
 
 import SwiftUI
+import Combine
 
 struct StagePositionView: View {
     let stageName:String
-    let stageController: StageController?
+    @ObservedObject var stageController: StageController?
     
     @State var test = 0.0
     
-    
-    @ObservedObject var targetDisplacement = NumbersOnly()
-    
-    var targetDisplacementDouble: Double {
-        get {
-            guard let doubleValue = Double(targetDisplacement.value) else {return 0.0}
-            return doubleValue
-        } set {
-            targetDisplacement.value = String(newValue)
-        }
-    }
     
     
     var body: some View {
         HStack {
             Text(stageName + ":")
-            Text(self.currentPosition())
+            Text(self.stageController?.currentPositionString ?? "Nothing")
             Button(action:{
-                print("Target Displacement = \(targetDisplacement)")
-                stageController?.moveRelative(targetDisplacement: targetDisplacementDouble)
+                //print("Target Displacement = \(targetDisplacement)")
+                print("Target Displacement = \(test)")
+                stageController?.moveRelative(targetDisplacement: test)
             })
             {
                 Text("Jog")
             }
-            TextField("0.00", value: $test, formatter: configureFormatter())
+            TextField("-10.00", value: $test, formatter: configureFormatter())
         }
         
     }
@@ -50,18 +41,7 @@ struct StagePositionView: View {
         
         return formatter
     }
-    
-    func currentPosition() -> String {
-        let errorValue = "??.??"
-        let formatter = configureFormatter()
-        formatter.minimumSignificantDigits = 5
-        formatter.maximumSignificantDigits = 5
-        
-        guard let position = self.stageController?.currentPosition else {return errorValue}
-        guard let positionAsString = formatter.string(from: NSNumber(value: position)) else {return errorValue}
-        
-        return positionAsString
-    }
+
 }
 
 struct StagePositionView_Previews: PreviewProvider {

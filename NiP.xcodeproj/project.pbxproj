@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		446A368425A8D6B100801A84 /* StagePositionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446A368325A8D6B100801A84 /* StagePositionView.swift */; };
 		446A368725A8DB0100801A84 /* NumbersOnly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446A368625A8DB0100801A84 /* NumbersOnly.swift */; };
+		44CBB08F25A94FF500209704 /* Extension_StringfromDouble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CBB08E25A94FF500209704 /* Extension_StringfromDouble.swift */; };
 		44D4079925A8ECAE00ADCB4F /* StageSGammaParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D4079825A8ECAE00ADCB4F /* StageSGammaParameters.swift */; };
 		C02729DB2592F68E00E61400 /* NiPApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02729DA2592F68E00E61400 /* NiPApp.swift */; };
 		C02729DD2592F68E00E61400 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02729DC2592F68E00E61400 /* ContentView.swift */; };
@@ -27,6 +28,7 @@
 /* Begin PBXFileReference section */
 		446A368325A8D6B100801A84 /* StagePositionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StagePositionView.swift; sourceTree = "<group>"; };
 		446A368625A8DB0100801A84 /* NumbersOnly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumbersOnly.swift; sourceTree = "<group>"; };
+		44CBB08E25A94FF500209704 /* Extension_StringfromDouble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension_StringfromDouble.swift; sourceTree = "<group>"; };
 		44D4079825A8ECAE00ADCB4F /* StageSGammaParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageSGammaParameters.swift; sourceTree = "<group>"; };
 		C02729D72592F68E00E61400 /* NiP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NiP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C02729DA2592F68E00E61400 /* NiPApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NiPApp.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 				C02729F62592FDE500E61400 /* StageGroup_Extension.swift */,
 				C0E16E4725A83138004E12B5 /* Protocol_ConnectableEquipment.swift */,
 				44D4079825A8ECAE00ADCB4F /* StageSGammaParameters.swift */,
+				44CBB08E25A94FF500209704 /* Extension_StringfromDouble.swift */,
 			);
 			path = "Protocols and Extensions";
 			sourceTree = "<group>";
@@ -213,6 +216,7 @@
 				C0E16E4025A8280F004E12B5 /* NotificationKeys.swift in Sources */,
 				C0B06DBD25A6C1D1003F5AE4 /* StageController.swift in Sources */,
 				446A368425A8D6B100801A84 /* StagePositionView.swift in Sources */,
+				44CBB08F25A94FF500209704 /* Extension_StringfromDouble.swift in Sources */,
 				446A368725A8DB0100801A84 /* NumbersOnly.swift in Sources */,
 				C0E16E4825A83138004E12B5 /* Protocol_ConnectableEquipment.swift in Sources */,
 				C0E16E4425A82F97004E12B5 /* EquipmentConnectView.swift in Sources */,

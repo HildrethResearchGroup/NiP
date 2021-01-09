@@ -13,7 +13,6 @@ struct EquipmentConnectView: View {
     
     var body: some View {
         VStack {
-            
             HStack {
                 connectionIndicator()
                 Button(action: {self.stageGroupController.connectToEquipmentController()})

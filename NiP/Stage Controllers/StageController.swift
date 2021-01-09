@@ -18,17 +18,43 @@ class StageController: ObservableObject {
         get { return stageGroupController.stageGroup }
     }
     
-    var subscribers: [AnyCancellable] = []
+    var subscribers = Set<AnyCancellable>()
     
     var monitorCurrentPosition = false {
         didSet {
+            print("monitorCurrentPosition = \(monitorCurrentPosition)")
             if monitorCurrentPosition == true && oldValue == false {
                 updateCurrentPositionContinuously()
             }
         }
     }
     var timeLengthToUpdatePosition = 0.25
-    @Published var currentPosition = 0.0
+    @Published var currentPosition = 0.0 {
+        didSet {
+            print("@Published var currentPosition = \(currentPosition)")
+            if oldValue != currentPosition {
+                let formatter = self.defaultNumberToStringFormatter()
+                currentPositionString = String(double: currentPosition, withFormatter: formatter)
+            }
+        }
+    }
+    @Published var currentPositionString:String = "??.???" {
+        didSet {
+            print("currentPositionString = \(currentPositionString)")
+        }
+    }
+    
+
+    func defaultNumberToStringFormatter() -> NumberFormatter {
+        let formatter = NumberFormatter()
+        formatter.usesSignificantDigits = true
+        formatter.minimumSignificantDigits = 5
+        formatter.maximumSignificantDigits = 5
+        formatter.notANumberSymbol = "??.?????"
+        
+        return formatter
+    }
+    
     
     let defaultStageSGammaParameters: StageSGammaParameters = .largeDisplacement
 
@@ -45,6 +71,7 @@ class StageController: ObservableObject {
         self.setSGammaParameters(defaultStageSGammaParameters)
         
         monitorCurrentPosition = true
+        updateCurrentPositionContinuously()
     }
 }
 
@@ -141,6 +168,7 @@ extension StageController {
             self.controller?.dispatchQueue.async {
                 do {
                     if let currentPosition = try self.stage.getCurrentPosition() {
+                        print("currentPosition in Future = \(currentPosition)")
                         promise(Result.success(currentPosition))
                     } else {
                         promise(Result.failure(ControllerError.communicationError))
@@ -155,16 +183,20 @@ extension StageController {
     
     
     func updateCurrentPositionContinuously() {
+        print("updateCurrentPositionContinuously")
         Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true, block: { [self]timer  in
             let future = self.getCurrentPosition()
-            let cancelable = future.replaceError(with: 0.0)
+            future.replaceError(with: -123.456)
+            //future.replaceError(with: 0.0)
                 .sink(receiveValue: { value in
-                    currentPosition = value
+                    print("currentPosition in sink = \(value)")
+                    self.currentPosition = value
                 })
+                .store(in: &subscribers)
             
             if monitorCurrentPosition == false {
                 timer.invalidate()
-                cancelable.cancel()
+                //cancelable.cancel()
                 print("done")
             }
         })
