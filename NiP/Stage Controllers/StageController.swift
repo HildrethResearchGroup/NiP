@@ -179,7 +179,6 @@ extension StageController {
         Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true, block: { [self]timer  in
             let future = self.getCurrentPosition()
             future.replaceError(with: -123.456)
-            //future.replaceError(with: 0.0)
                 .receive(on: DispatchQueue.main)
                 .sink(receiveValue: { value in
                     self.currentPosition = value
