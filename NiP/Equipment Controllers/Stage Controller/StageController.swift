@@ -27,7 +27,9 @@ class StageController: ObservableObject {
             }
         }
     }
+    
     var timeLengthToUpdatePosition = 0.25
+    
     @Published var currentPosition = 0.0 {
         didSet {
             if oldValue != currentPosition {
@@ -38,11 +40,14 @@ class StageController: ObservableObject {
     }
     @Published var currentPositionString:String = "??.???"
     
-    @Published var stageisMoving = false {
+    var stageisMoving = false {
         didSet {
             print("stageisMoving = \(stageisMoving)")
+            updateState()
         }
     }
+    
+    @Published var state = StageState.notConnected
     
     let defaultStageSGammaParameters: StageSGammaParameters = .largeDisplacement
     
@@ -79,6 +84,22 @@ extension StageController {
         formatter.notANumberSymbol = "??.?????"
         
         return formatter
+    }
+    
+    /**
+        Updates the state of the stages.  Used for monitoring the stages.
+     */
+    func updateState() {
+        if controller == nil {
+            self.state = .notConnected
+            return
+        }
+        if stageisMoving == true {
+            self.state = .moving
+            return
+        }
+        
+        self.state = .idle
     }
     
     
@@ -132,6 +153,12 @@ extension StageController {
      - Author: Owen Hildreth
     */
     func moveRelative(targetDisplacement: Double) {
+        // Don't send another move command if the stages are still moving
+        if stageisMoving == true {
+            print("ERROR: moveRelative - Stages already moving")
+            return
+        }
+        
         // Get a unqiue dispatch queue for movement
         let dispatchQueue = self.defaultQueue(for: .movement)
         
@@ -169,6 +196,11 @@ extension StageController {
      ````
      */
     func moveAbsolute(toLocation: Double) throws {
+        if stageisMoving == true {
+            print("ERROR: moveRelative - Stages already moving")
+            return
+        }
+        
         // Get a unqiue dispatch queue for movement
         let dispatchQueue = self.defaultQueue(for: .movement)
         

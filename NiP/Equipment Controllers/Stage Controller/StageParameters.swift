@@ -13,5 +13,10 @@ struct VelocityAndAcceleration {
 enum StageQueueType {
     case movement
     case monitoring
-    
+}
+
+enum StageState {
+    case notConnected
+    case idle
+    case moving
 }
