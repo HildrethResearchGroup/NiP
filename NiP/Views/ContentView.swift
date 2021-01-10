@@ -18,7 +18,6 @@ struct ContentView: View {
             StagePositionView(stageName: "Y", stageController: stageGroupController.y)
             StagePositionView(stageName: "Z", stageController: stageGroupController.z)
         }
-        .fixedSize()
         .padding()
     }
     

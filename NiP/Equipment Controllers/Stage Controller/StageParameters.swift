@@ -15,8 +15,10 @@ enum StageQueueType {
     case monitoring
 }
 
-enum StageState {
+enum StageState: String, CaseIterable, Identifiable {
     case notConnected
     case idle
     case moving
+    
+    var id: String { self.rawValue }
 }

@@ -19,6 +19,15 @@ class StageController: ObservableObject {
     }
     
     var subscribers = Set<AnyCancellable>()
+
+    // MARK: State
+    var stageisMoving = false {
+        didSet {
+            print("stageisMoving = \(stageisMoving)")
+            updateState()
+        }
+    }
+    @Published var state = StageState.notConnected
     
     var monitorCurrentPosition = false {
         didSet {
@@ -27,7 +36,6 @@ class StageController: ObservableObject {
             }
         }
     }
-    
     var timeLengthToUpdatePosition = 0.25
     
     @Published var currentPosition = 0.0 {
@@ -40,16 +48,9 @@ class StageController: ObservableObject {
     }
     @Published var currentPositionString:String = "??.???"
     
-    var stageisMoving = false {
-        didSet {
-            print("stageisMoving = \(stageisMoving)")
-            updateState()
-        }
-    }
     
-    @Published var state = StageState.notConnected
-    
-    let defaultStageSGammaParameters: StageSGammaParameters = .largeDisplacement
+    // MARK: Settings
+    @Published var stageSGammaParameters: StageSGammaParameters = .largeDisplacement
     
     
     init(stageGroupController: StageGroupController?, andName stageNameIn: String, inController: XPSQ8Controller?) {
@@ -61,7 +62,7 @@ class StageController: ObservableObject {
         } else {stage = nil}
         self.stageGroupController = stageGroupController
         
-        self.setSGammaParameters(defaultStageSGammaParameters)
+        self.setSGammaParameters(stageSGammaParameters)
         
         monitorCurrentPosition = true
         updateCurrentPositionContinuously()
@@ -195,7 +196,7 @@ extension StageController {
      stageController.moveAbsolute(stageToMove, toLocation: 30.0)
      ````
      */
-    func moveAbsolute(toLocation: Double) throws {
+    func moveAbsolute(toLocation: Double) {
         // Don't send another move command if the stages are not idle
         if state != .idle {
             print("ERROR: moveRelative - Stages are not idle")

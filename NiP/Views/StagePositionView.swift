@@ -12,7 +12,8 @@ struct StagePositionView: View {
     let stageName:String
     @ObservedObject var stageController: StageController
     
-    @State var test = 0.0
+    @State var targetDisplacement = 0.0
+    @State var targetLocation = 0.0
     
     
     
@@ -22,14 +23,24 @@ struct StagePositionView: View {
             Text(stageName + ":")
             Text(self.stageController.currentPositionString)
                 .frame(minWidth: 60, maxWidth: 60, alignment: .leading)
+                .padding(.trailing)
             Button(action:{
-                stageController.moveRelative(targetDisplacement: test)
-            })
-            {
-                Text("Jog")
-            }
-            TextField("-10.00", value: $test, formatter: configureFormatter())
+                stageController.moveRelative(targetDisplacement: targetDisplacement)
+            })  {Text("Jog") }.disabled(stageController.state != .idle)
+            TextField("-10.00", value: $targetDisplacement, formatter: configureFormatter())
                 .frame(minWidth: 80, maxWidth: 80, alignment: .center)
+                .padding(.trailing)
+            Button(action:{
+                stageController.moveAbsolute(toLocation: targetLocation)
+            })  {Text("Move To") }.disabled(stageController.state != .idle)
+            TextField("-10.00", value: $targetLocation, formatter: configureFormatter())
+                .frame(minWidth: 80, maxWidth: 80, alignment: .center)
+                .padding(.trailing)
+            Picker("Vel. & Acc.", selection: $stageController.stageSGammaParameters) {
+                ForEach(StageSGammaParameters.allCases) { setting in
+                    Text(setting.rawValue.capitalized)
+                }.fixedSize()
+            }
         }
         
     }
@@ -60,6 +71,7 @@ struct StagePositionView: View {
         
         return circleView
     }
+    
 
 }
 
