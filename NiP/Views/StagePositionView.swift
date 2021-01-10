@@ -18,6 +18,7 @@ struct StagePositionView: View {
     
     var body: some View {
         HStack {
+            stateIndicator()
             Text(stageName + ":")
             Text(self.stageController.currentPositionString)
                 .frame(minWidth: 60, maxWidth: 60, alignment: .leading)
@@ -40,6 +41,24 @@ struct StagePositionView: View {
         formatter.notANumberSymbol = "????"
         
         return formatter
+    }
+    
+    func stateIndicator() -> some View {
+        let color: Color
+        switch stageController.state {
+        case .notConnected:
+            color = Color.red
+        case .idle:
+            color = Color.green
+        case .moving:
+            color = Color.purple
+        }
+        
+        let circleView = Circle()
+            .fill(color)
+            .frame(width: 10, height: 10)
+        
+        return circleView
     }
 
 }

@@ -153,9 +153,9 @@ extension StageController {
      - Author: Owen Hildreth
     */
     func moveRelative(targetDisplacement: Double) {
-        // Don't send another move command if the stages are still moving
-        if stageisMoving == true {
-            print("ERROR: moveRelative - Stages already moving")
+        // Don't send another move command if the stages are not idle
+        if state != .idle {
+            print("ERROR: moveRelative - Stages are not idle")
             return
         }
         
@@ -196,8 +196,9 @@ extension StageController {
      ````
      */
     func moveAbsolute(toLocation: Double) throws {
-        if stageisMoving == true {
-            print("ERROR: moveRelative - Stages already moving")
+        // Don't send another move command if the stages are not idle
+        if state != .idle {
+            print("ERROR: moveRelative - Stages are not idle")
             return
         }
         

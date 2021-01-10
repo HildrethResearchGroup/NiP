@@ -33,7 +33,7 @@ struct EquipmentConnectView: View {
         
         let circleView = Circle()
             .fill(color)
-            .frame(width: 18, height: 18)
+            .frame(width: 13, height: 13)
         
         return circleView
     }
