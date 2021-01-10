@@ -66,6 +66,7 @@ class StageController: ObservableObject {
         
         monitorCurrentPosition = true
         updateCurrentPositionContinuously()
+        updateState()
     }
 }
 
