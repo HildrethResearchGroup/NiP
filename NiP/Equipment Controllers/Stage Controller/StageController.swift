@@ -38,8 +38,40 @@ class StageController: ObservableObject {
     }
     @Published var currentPositionString:String = "??.???"
     
+    @Published var stageisMoving = false {
+        didSet {
+            print("stageisMoving = \(stageisMoving)")
+        }
+    }
+    
+    let defaultStageSGammaParameters: StageSGammaParameters = .largeDisplacement
+    
+    
+    init(stageGroupController: StageGroupController?, andName stageNameIn: String, inController: XPSQ8Controller?) {
+        controller = inController
+        stageName = stageNameIn
 
+        if let tempStageGroup = stageGroupController?.stageGroup {
+            stage = Stage(stageGroup: tempStageGroup, stageName: stageNameIn)
+        } else {stage = nil}
+        self.stageGroupController = stageGroupController
+        
+        self.setSGammaParameters(defaultStageSGammaParameters)
+        
+        monitorCurrentPosition = true
+        updateCurrentPositionContinuously()
+    }
+}
+
+// MARK: - Helper Functions
+extension StageController {
+    
+    /** Provides a default number formatter use to format the position of the stages
+    - Authors:
+        Owen Hildreth
+     */
     func defaultNumberToStringFormatter() -> NumberFormatter {
+        // TODO: Find a better home for this function.
         let formatter = NumberFormatter()
         formatter.usesSignificantDigits = true
         formatter.minimumSignificantDigits = 5
@@ -50,22 +82,34 @@ class StageController: ObservableObject {
     }
     
     
-    let defaultStageSGammaParameters: StageSGammaParameters = .largeDisplacement
-
-    
-    init(stageGroupController: StageGroupController?, andName stageNameIn: String, inController: XPSQ8Controller?) {
-        controller = inController
-        stageName = stageNameIn
+    /**
+     Provides a deafult queue to run a moment and montioring operations asynconously.
+     
+     It is important that each type of queue be differnet otherwise operations that take a long time (such as a movement) will block monitoring calls
+     
+     - Parameters:
+        - type: The StageQueueType
+     */
+    func defaultQueue(for type: StageQueueType) -> DispatchQueue {
         
-        if let tempStageGroup = stageGroupController?.stageGroup {
-            stage = Stage(stageGroup: tempStageGroup, stageName: stageNameIn)
-        } else {stage = nil}
-        self.stageGroupController = stageGroupController
+        let stageGroupName: String
         
-        self.setSGammaParameters(defaultStageSGammaParameters)
+        if stageGroup != nil {
+            stageGroupName = stageGroup!.stageGroupName
+        } else { stageGroupName = "A" }
         
-        monitorCurrentPosition = true
-        updateCurrentPositionContinuously()
+        let queueType: String
+        
+        switch type {
+        case .movement:
+            queueType = "movement"
+        case .monitoring:
+            queueType = "monitoring"
+        }
+        
+        let identifier = stageGroupName + "_" + stageName + "_" + queueType
+        
+        return DispatchQueue(label: identifier, qos: .userInitiated)
     }
 }
 
@@ -88,12 +132,20 @@ extension StageController {
      - Author: Owen Hildreth
     */
     func moveRelative(targetDisplacement: Double) {
-        controller?.dispatchQueue.async {
-            //stage.moveRelative(targetDisplacement: targetDisplacement)
-            do {
-                try self.stage?.moveRelative(targetDisplacement: targetDisplacement)
-            } catch {
-                print(error)
+        // Get a unqiue dispatch queue for movement
+        let dispatchQueue = self.defaultQueue(for: .movement)
+        
+        // Only move if the controller exists
+        if controller != nil {
+            // Run command asynchronously to keep from blocking
+            dispatchQueue.async {
+                DispatchQueue.main.sync{self.stageisMoving = true}
+                do {
+                    try self.stage?.moveRelative(targetDisplacement: targetDisplacement)
+                } catch {
+                    print(error)
+                }
+                DispatchQueue.main.sync{self.stageisMoving = false}
             }
         }
     } // END:  moveRelative
@@ -117,17 +169,23 @@ extension StageController {
      ````
      */
     func moveAbsolute(toLocation: Double) throws {
-        controller?.dispatchQueue.async {
-            //stage.moveRelative(targetDisplacement: targetDisplacement)
-            do {
-                try self.stage?.moveAbsolute(toLocation: toLocation)
-            } catch {
-                print(error)
+        // Get a unqiue dispatch queue for movement
+        let dispatchQueue = self.defaultQueue(for: .movement)
+        
+        // Only move if the controller exists
+        if controller != nil {
+            // Run command asynchronously to keep from blocking
+            dispatchQueue.async {
+                DispatchQueue.main.sync{self.stageisMoving = true}
+                do {
+                    try self.stage?.moveAbsolute(toLocation: toLocation)
+                } catch {
+                    print(error)
+                }
+                DispatchQueue.main.sync{self.stageisMoving = false}
             }
         }
     } // END: moveAbsolute
-    
-    
     
     
     func setSGammaParameters(_ parameters: StageSGammaParameters) {
@@ -136,7 +194,10 @@ extension StageController {
     
     
     func setSGammaParameters(_ parameters: SGammaParameters) {
-        controller?.dispatchQueue.async {
+        // Get a unqiue dispatch queue for movement
+        let dispatchQueue = self.defaultQueue(for: .monitoring)
+        
+        dispatchQueue.async {
             let vel = parameters.velocity
             let acc = parameters.acceleration
             let min = parameters.minimumTjerkTime
@@ -153,18 +214,18 @@ extension StageController {
 
 // MARK: - Monitoring Stages
 extension StageController {
-    enum ControllerError: Error {
-        case communicationError
-    }
-    
     func getCurrentPosition() -> Future<Double, Error> {
+        
+        // Get a unqiue dispatch queue for movement
+        let dispatchQueue = self.defaultQueue(for: .monitoring)
+        
         let future = Future<Double, Error> { promise in
-            self.controller?.dispatchQueue.async {
+            dispatchQueue.async {
                 do {
                     if let currentPosition = try self.stage?.getCurrentPosition() {
                         promise(Result.success(currentPosition))
                     } else {
-                        promise(Result.failure(ControllerError.communicationError))
+                        promise(Result.failure(StageError.communicationError))
                     }
                 } catch {
                     promise(Result.failure(error))

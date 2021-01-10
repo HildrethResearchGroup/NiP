@@ -9,3 +9,9 @@ struct VelocityAndAcceleration {
     var vel: Double?
     var acc: Double?
 }
+
+enum StageQueueType {
+    case movement
+    case monitoring
+    
+}

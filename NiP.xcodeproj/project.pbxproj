@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		446A368425A8D6B100801A84 /* StagePositionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446A368325A8D6B100801A84 /* StagePositionView.swift */; };
-		446A368725A8DB0100801A84 /* NumbersOnly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446A368625A8DB0100801A84 /* NumbersOnly.swift */; };
 		44CBB08F25A94FF500209704 /* Extension_StringfromDouble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CBB08E25A94FF500209704 /* Extension_StringfromDouble.swift */; };
 		44D4079925A8ECAE00ADCB4F /* StageSGammaParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D4079825A8ECAE00ADCB4F /* StageSGammaParameters.swift */; };
 		C02729DB2592F68E00E61400 /* NiPApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02729DA2592F68E00E61400 /* NiPApp.swift */; };
@@ -23,11 +22,11 @@
 		C0E16E4025A8280F004E12B5 /* NotificationKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E16E3F25A8280F004E12B5 /* NotificationKeys.swift */; };
 		C0E16E4425A82F97004E12B5 /* EquipmentConnectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E16E4325A82F97004E12B5 /* EquipmentConnectView.swift */; };
 		C0E16E4825A83138004E12B5 /* Protocol_ConnectableEquipment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E16E4725A83138004E12B5 /* Protocol_ConnectableEquipment.swift */; };
+		C0FE47C125AABD8200AE3294 /* StageErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FE47C025AABD8200AE3294 /* StageErrors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		446A368325A8D6B100801A84 /* StagePositionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StagePositionView.swift; sourceTree = "<group>"; };
-		446A368625A8DB0100801A84 /* NumbersOnly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumbersOnly.swift; sourceTree = "<group>"; };
 		44CBB08E25A94FF500209704 /* Extension_StringfromDouble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension_StringfromDouble.swift; sourceTree = "<group>"; };
 		44D4079825A8ECAE00ADCB4F /* StageSGammaParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageSGammaParameters.swift; sourceTree = "<group>"; };
 		C02729D72592F68E00E61400 /* NiP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NiP.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +43,7 @@
 		C0E16E3F25A8280F004E12B5 /* NotificationKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationKeys.swift; sourceTree = "<group>"; };
 		C0E16E4325A82F97004E12B5 /* EquipmentConnectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentConnectView.swift; sourceTree = "<group>"; };
 		C0E16E4725A83138004E12B5 /* Protocol_ConnectableEquipment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol_ConnectableEquipment.swift; sourceTree = "<group>"; };
+		C0FE47C025AABD8200AE3294 /* StageErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageErrors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,10 +77,10 @@
 		C02729D92592F68E00E61400 /* NiP */ = {
 			isa = PBXGroup;
 			children = (
+				C02729DA2592F68E00E61400 /* NiPApp.swift */,
 				C0E16E3E25A827FB004E12B5 /* Helper Files */,
 				C02729EC2592F6EC00E61400 /* Views */,
-				C02729EB2592F6DA00E61400 /* Stage Controllers */,
-				C02729DA2592F68E00E61400 /* NiPApp.swift */,
+				C02729EB2592F6DA00E61400 /* Equipment Controllers */,
 				C02729DE2592F68E00E61400 /* Assets.xcassets */,
 				C02729E32592F68E00E61400 /* Info.plist */,
 				C02729E42592F68E00E61400 /* NiP.entitlements */,
@@ -97,15 +97,14 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		C02729EB2592F6DA00E61400 /* Stage Controllers */ = {
+		C02729EB2592F6DA00E61400 /* Equipment Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				C0E16E4625A8311B004E12B5 /* Protocols and Extensions */,
-				C02729F12592F7CD00E61400 /* StageGroupController.swift */,
-				C05EA3222593E61300F4D0AD /* StageParameters.swift */,
-				C0B06DBC25A6C1D1003F5AE4 /* StageController.swift */,
+				C0FE47BF25AABC4100AE3294 /* Stage Group Controller */,
+				C0FE47BD25AABC2A00AE3294 /* Stage Controller */,
 			);
-			path = "Stage Controllers";
+			path = "Equipment Controllers";
 			sourceTree = "<group>";
 		};
 		C02729EC2592F6EC00E61400 /* Views */ = {
@@ -121,8 +120,8 @@
 		C0E16E3E25A827FB004E12B5 /* Helper Files */ = {
 			isa = PBXGroup;
 			children = (
+				44CBB08E25A94FF500209704 /* Extension_StringfromDouble.swift */,
 				C0E16E3F25A8280F004E12B5 /* NotificationKeys.swift */,
-				446A368625A8DB0100801A84 /* NumbersOnly.swift */,
 			);
 			path = "Helper Files";
 			sourceTree = "<group>";
@@ -130,12 +129,29 @@
 		C0E16E4625A8311B004E12B5 /* Protocols and Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				C02729F62592FDE500E61400 /* StageGroup_Extension.swift */,
 				C0E16E4725A83138004E12B5 /* Protocol_ConnectableEquipment.swift */,
-				44D4079825A8ECAE00ADCB4F /* StageSGammaParameters.swift */,
-				44CBB08E25A94FF500209704 /* Extension_StringfromDouble.swift */,
 			);
 			path = "Protocols and Extensions";
+			sourceTree = "<group>";
+		};
+		C0FE47BD25AABC2A00AE3294 /* Stage Controller */ = {
+			isa = PBXGroup;
+			children = (
+				C0B06DBC25A6C1D1003F5AE4 /* StageController.swift */,
+				C05EA3222593E61300F4D0AD /* StageParameters.swift */,
+				44D4079825A8ECAE00ADCB4F /* StageSGammaParameters.swift */,
+				C0FE47C025AABD8200AE3294 /* StageErrors.swift */,
+			);
+			path = "Stage Controller";
+			sourceTree = "<group>";
+		};
+		C0FE47BF25AABC4100AE3294 /* Stage Group Controller */ = {
+			isa = PBXGroup;
+			children = (
+				C02729F12592F7CD00E61400 /* StageGroupController.swift */,
+				C02729F62592FDE500E61400 /* StageGroup_Extension.swift */,
+			);
+			path = "Stage Group Controller";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -217,8 +233,8 @@
 				C0B06DBD25A6C1D1003F5AE4 /* StageController.swift in Sources */,
 				446A368425A8D6B100801A84 /* StagePositionView.swift in Sources */,
 				44CBB08F25A94FF500209704 /* Extension_StringfromDouble.swift in Sources */,
-				446A368725A8DB0100801A84 /* NumbersOnly.swift in Sources */,
 				C0E16E4825A83138004E12B5 /* Protocol_ConnectableEquipment.swift in Sources */,
+				C0FE47C125AABD8200AE3294 /* StageErrors.swift in Sources */,
 				C0E16E4425A82F97004E12B5 /* EquipmentConnectView.swift in Sources */,
 				C02729F22592F7CD00E61400 /* StageGroupController.swift in Sources */,
 				C02729DD2592F68E00E61400 /* ContentView.swift in Sources */,
