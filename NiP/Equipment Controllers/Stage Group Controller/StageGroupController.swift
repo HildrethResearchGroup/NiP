@@ -124,13 +124,19 @@ extension StageGroupController {
         
         if controller != nil {
             controller?.dispatchQueue.sync {
-                DispatchQueue.main.sync { stageController.stageIsMoving = true }
+                
+                DispatchQueue.main.async {
+                    print("moveRelative: about to set stageIsMoving to true")
+                    stageController.stageIsMoving = true }
                 do {
+                    print("moveRelative: moving stage")
                     try stageController.stage?.moveRelative(targetDisplacement: targetDisplacement)
                 } catch {
                     print(error)
                 }
-                DispatchQueue.main.sync{stageController.stageIsMoving = false}
+                DispatchQueue.main.async {
+                    print("moveRelative: about to set stageIsMoving to false")
+                    stageController.stageIsMoving = false}
             }
         }
         
@@ -173,21 +179,22 @@ extension StageGroupController {
         
         // Run on a different thread
         controller?.dispatchQueue.async { [self] in
-            DispatchQueue.main.sync{self.isMonitoring = true}
+            DispatchQueue.main.async{self.isMonitoring = true}
             
             for nextStageController in stageControllers {
+                print("renwStagePositions: trying to get data")
                 let stage = nextStageController.stage
                 
                 do {
                     guard let currentPosition = try stage?.getCurrentPosition()
-                    else { print("renewStagePositions: ERROR trying to get data")
+                    else { print("renewStagePositions: ERROR data was nil")
                         return}
                     DispatchQueue.main.sync{nextStageController.currentPosition = currentPosition}
                 } catch  {
                     print("renewStagePositions: ERROR trying to get data")
                 }
             }
-            DispatchQueue.main.sync{self.isMonitoring = false}
+            DispatchQueue.main.async{self.isMonitoring = false}
         }
     }
     

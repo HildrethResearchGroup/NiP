@@ -219,13 +219,15 @@ extension StageController {
         if controller != nil {
             // Run command asynchronously to keep from blocking
             dispatchQueue.sync {
-                DispatchQueue.main.sync{self.stageIsMoving = true}
+                DispatchQueue.main.async{self.stageIsMoving = true}
                 do {
+                    print("start move")
                     try self.stage?.moveAbsolute(toLocation: toLocation)
+                    print("end move")
                 } catch {
                     print(error)
                 }
-                DispatchQueue.main.sync{self.stageIsMoving = false}
+                DispatchQueue.main.async{self.stageIsMoving = false}
             }
         }
     } // END: moveAbsolute
