@@ -21,9 +21,9 @@ class StageController: ObservableObject {
     var subscribers = Set<AnyCancellable>()
 
     // MARK: State
-    var stageisMoving = false {
+    var stageIsMoving = false {
         didSet {
-            print("stageisMoving = \(stageisMoving)")
+            print("stageisMoving = \(stageIsMoving)")
             updateState()
         }
     }
@@ -64,7 +64,8 @@ class StageController: ObservableObject {
         
         self.setSGammaParameters(stageSGammaParameters)
         
-        monitorCurrentPosition = true
+        // Turn off monitoring
+        monitorCurrentPosition = false
         updateCurrentPositionContinuously()
         updateState()
     }
@@ -96,7 +97,7 @@ extension StageController {
             self.state = .notConnected
             return
         }
-        if stageisMoving == true {
+        if stageIsMoving == true {
             self.state = .moving
             return
         }
@@ -128,6 +129,8 @@ extension StageController {
             queueType = "movement"
         case .monitoring:
             queueType = "monitoring"
+        case .shared:
+            queueType = "shared"
         }
         
         let identifier = stageGroupName + "_" + stageName + "_" + queueType
@@ -155,6 +158,10 @@ extension StageController {
      - Author: Owen Hildreth
     */
     func moveRelative(targetDisplacement: Double) {
+        
+        self.stageGroupController?.moveRelative(stageController: self, targetDisplacement: targetDisplacement)
+        
+        /*
         // Don't send another move command if the stages are not idle
         if state != .idle {
             print("ERROR: moveRelative - Stages are not idle")
@@ -167,16 +174,17 @@ extension StageController {
         // Only move if the controller exists
         if controller != nil {
             // Run command asynchronously to keep from blocking
-            dispatchQueue.async {
-                DispatchQueue.main.sync{self.stageisMoving = true}
+            dispatchQueue.sync {
+                DispatchQueue.main.sync{self.stageIsMoving = true}
                 do {
                     try self.stage?.moveRelative(targetDisplacement: targetDisplacement)
                 } catch {
                     print(error)
                 }
-                DispatchQueue.main.sync{self.stageisMoving = false}
+                DispatchQueue.main.sync{self.stageIsMoving = false}
             }
         }
+         */
     } // END:  moveRelative
     
     
@@ -210,14 +218,14 @@ extension StageController {
         // Only move if the controller exists
         if controller != nil {
             // Run command asynchronously to keep from blocking
-            dispatchQueue.async {
-                DispatchQueue.main.sync{self.stageisMoving = true}
+            dispatchQueue.sync {
+                DispatchQueue.main.sync{self.stageIsMoving = true}
                 do {
                     try self.stage?.moveAbsolute(toLocation: toLocation)
                 } catch {
                     print(error)
                 }
-                DispatchQueue.main.sync{self.stageisMoving = false}
+                DispatchQueue.main.sync{self.stageIsMoving = false}
             }
         }
     } // END: moveAbsolute
@@ -272,6 +280,8 @@ extension StageController {
     
     
     func updateCurrentPositionContinuously() {
+        if monitorCurrentPosition == false {return}
+        
         Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true, block: { [self]timer  in
             let future = self.getCurrentPosition()
             future.replaceError(with: -123.456)

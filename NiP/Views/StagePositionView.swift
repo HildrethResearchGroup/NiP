@@ -26,19 +26,19 @@ struct StagePositionView: View {
                 .padding(.trailing)
             Button(action:{
                 stageController.moveRelative(targetDisplacement: targetDisplacement)
-            })  {Text("Jog") }.disabled(stageController.state != .idle)
+            })  {Text("Jog") }.disabled(stageController.stageGroupController?.state != .idle)
             TextField("-10.00", value: $targetDisplacement, formatter: configureFormatter())
                 .frame(minWidth: 80, maxWidth: 80, alignment: .center)
                 .padding(.trailing)
             Button(action:{
                 stageController.moveAbsolute(toLocation: targetLocation)
-            })  {Text("Move To") }.disabled(stageController.state != .idle)
+            })  {Text("Move To") }.disabled(stageController.stageGroupController?.state != .idle)
             TextField("-10.00", value: $targetLocation, formatter: configureFormatter())
                 .frame(minWidth: 80, maxWidth: 80, alignment: .center)
                 .padding(.trailing)
             Picker("Vel. & Acc.", selection: $stageController.stageSGammaParameters) {
                 ForEach(StageSGammaParameters.allCases) { setting in
-                    Text(setting.rawValue.capitalized)
+                    Text(setting.id)
                 }.fixedSize()
             }
         }
@@ -63,6 +63,8 @@ struct StagePositionView: View {
             color = Color.green
         case .moving:
             color = Color.purple
+        case .monitoring:
+            color = Color.orange
         }
         
         let circleView = Circle()
@@ -75,6 +77,9 @@ struct StagePositionView: View {
 
 }
 
+
+
+// MARK: - Previews
 struct StagePositionView_Previews: PreviewProvider {
     
     static var previews: some View {

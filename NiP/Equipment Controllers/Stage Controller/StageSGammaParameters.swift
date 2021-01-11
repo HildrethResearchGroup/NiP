@@ -29,7 +29,7 @@ enum StageSGammaParameters: String, CaseIterable, Identifiable {
         }
     }
     
-    var id: String { self.rawValue.camelCaps }
+    var id: String { self.rawValue }
 }
 
 struct SGammaParameters {
