@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import SwiftUI
 import XPSQ8Kit
 
 class StageController: ObservableObject {
@@ -28,6 +29,7 @@ class StageController: ObservableObject {
         }
     }
     var timeLengthToUpdatePosition = 0.25
+    
     @Published var currentPosition = 0.0 {
         didSet {
             if oldValue != currentPosition {
@@ -50,7 +52,13 @@ class StageController: ObservableObject {
     }
     
     
-    let defaultStageSGammaParameters: StageSGammaParameters = .largeDisplacement
+    @State var currentStageSGammaParameters: StageSGammaParameters = .largeDisplacement {
+        didSet {
+            if currentStageSGammaParameters != oldValue {
+                self.setSGammaParameters(currentStageSGammaParameters)
+            }
+        }
+    }
 
     
     init(stageGroupController: StageGroupController?, andName stageNameIn: String, inController: XPSQ8Controller?) {
@@ -62,7 +70,7 @@ class StageController: ObservableObject {
         } else {stage = nil}
         self.stageGroupController = stageGroupController
         
-        self.setSGammaParameters(defaultStageSGammaParameters)
+        self.setSGammaParameters(currentStageSGammaParameters)
         
         monitorCurrentPosition = true
         updateCurrentPositionContinuously()
@@ -116,7 +124,7 @@ extension StageController {
      stageController.moveAbsolute(stageToMove, toLocation: 30.0)
      ````
      */
-    func moveAbsolute(toLocation: Double) throws {
+    func moveAbsolute(toLocation: Double) {
         controller?.dispatchQueue.async {
             //stage.moveRelative(targetDisplacement: targetDisplacement)
             do {

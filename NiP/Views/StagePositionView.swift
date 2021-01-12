@@ -12,7 +12,8 @@ struct StagePositionView: View {
     let stageName:String
     @ObservedObject var stageController: StageController
     
-    @State var test = 0.0
+    @State var targetDisplacement = 0.0
+    @State var targetPosition = 0.0
     
     
     
@@ -22,13 +23,24 @@ struct StagePositionView: View {
             Text(self.stageController.currentPositionString)
                 .frame(minWidth: 60, maxWidth: 60, alignment: .leading)
             Button(action:{
-                stageController.moveRelative(targetDisplacement: test)
+                stageController.moveRelative(targetDisplacement: targetDisplacement)
             })
-            {
-                Text("Jog")
-            }
-            TextField("-10.00", value: $test, formatter: configureFormatter())
+            { Text("Jog") }
+            TextField("-10.00", value: $targetDisplacement, formatter: configureFormatter())
                 .frame(minWidth: 80, maxWidth: 80, alignment: .center)
+                .padding(.trailing)
+            Button(action:{
+                stageController.moveAbsolute(toLocation: targetPosition)
+            })
+            { Text("Move To") }
+            TextField("-10.00", value: $targetDisplacement, formatter: configureFormatter())
+                .frame(minWidth: 80, maxWidth: 80, alignment: .center)
+                .padding(.trailing)
+            Picker("Vec. & Acc.", selection: $stageController.currentStageSGammaParameters, content: {
+                ForEach(StageSGammaParameters.allCases) { setting in
+                    Text(setting.rawValue).tag(setting.id)}
+                    
+            })
         }
         
     }

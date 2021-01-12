@@ -8,7 +8,7 @@
 
 
 
-enum StageSGammaParameters {
+enum StageSGammaParameters: String, CaseIterable, Identifiable, Hashable {
     case largeDisplacement
     case mediumDisplacement
     case smallDisplacement
@@ -28,6 +28,8 @@ enum StageSGammaParameters {
             }
         }
     }
+    
+    var id: String { self.rawValue }
 }
 
 struct SGammaParameters {
