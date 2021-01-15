@@ -52,7 +52,7 @@ class StageController: ObservableObject {
     }
     
     
-    @State public var currentStageSGammaParameters: StageSGammaParameters = .largeDisplacement {
+    @Published public var currentStageSGammaParameters: StageSGammaParameters = .largeDisplacement {
         didSet {
             print("currentStageSGammaParameters = \(currentStageSGammaParameters)")
             if currentStageSGammaParameters != oldValue {

@@ -78,8 +78,8 @@
 			isa = PBXGroup;
 			children = (
 				C0E16E3E25A827FB004E12B5 /* Helper Files */,
-				C02729EC2592F6EC00E61400 /* Views */,
 				C02729EB2592F6DA00E61400 /* Stage Controllers */,
+				C02729EC2592F6EC00E61400 /* Views */,
 				C02729DA2592F68E00E61400 /* NiPApp.swift */,
 				C02729DE2592F68E00E61400 /* Assets.xcassets */,
 				C02729E32592F68E00E61400 /* Info.plist */,
