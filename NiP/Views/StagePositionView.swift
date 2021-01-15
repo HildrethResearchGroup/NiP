@@ -32,7 +32,7 @@ struct StagePositionView: View {
                 stageController.moveAbsolute(toLocation: targetPosition)
             })
             { Text("Move To") }
-            TextField("-10.00", value: $targetDisplacement, formatter: configureFormatter())
+            TextField("-10.00", value: $targetPosition, formatter: configureFormatter())
                 .frame(minWidth: 80, maxWidth: 80, alignment: .center)
                 .padding(.trailing)
             SGammaPicker(sGammaParameter: $stageController.currentStageSGammaParameters)
