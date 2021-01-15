@@ -52,13 +52,15 @@ class StageController: ObservableObject {
     }
     
     
-    @State var currentStageSGammaParameters: StageSGammaParameters = .largeDisplacement {
+    @State public var currentStageSGammaParameters: StageSGammaParameters = .largeDisplacement {
         didSet {
+            print("currentStageSGammaParameters = \(currentStageSGammaParameters)")
             if currentStageSGammaParameters != oldValue {
                 self.setSGammaParameters(currentStageSGammaParameters)
             }
         }
     }
+ 
 
     
     init(stageGroupController: StageGroupController?, andName stageNameIn: String, inController: XPSQ8Controller?) {

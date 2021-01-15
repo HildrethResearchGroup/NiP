@@ -15,6 +15,8 @@ struct StagePositionView: View {
     @State var targetDisplacement = 0.0
     @State var targetPosition = 0.0
     
+    let parameters: [StageSGammaParameters] = [.largeDisplacement, .mediumDisplacement, .smallDisplacement, . fineDisplacement]
+    
     
     
     var body: some View {
@@ -36,11 +38,13 @@ struct StagePositionView: View {
             TextField("-10.00", value: $targetDisplacement, formatter: configureFormatter())
                 .frame(minWidth: 80, maxWidth: 80, alignment: .center)
                 .padding(.trailing)
-            Picker("Vec. & Acc.", selection: $stageController.currentStageSGammaParameters, content: {
-                ForEach(StageSGammaParameters.allCases, id: \.self) { setting in
-                    Text(setting.displayString())}
+            Picker("Vec. & Acc.", selection: self.$stageController.currentStageSGammaParameters) {
+                ForEach(parameters) { setting in
+                    Text(setting.displayString())
+                        .tag(setting as StageSGammaParameters)
+                }
                     
-            })
+            }
         }
         
     }
