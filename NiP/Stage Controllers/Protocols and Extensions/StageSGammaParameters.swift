@@ -4,10 +4,6 @@
 //
 //  Created by Dr. Owen Hildreth (Admin) on 1/8/21.
 //
-
-
-
-
 enum StageSGammaParameters: String, CaseIterable, Identifiable, Hashable {
     case largeDisplacement
     case mediumDisplacement
@@ -30,6 +26,15 @@ enum StageSGammaParameters: String, CaseIterable, Identifiable, Hashable {
     }
     
     var id: String { self.rawValue }
+    
+    func displayString() -> String {
+        var outputString = self.id.camelCaps.capitalized
+        
+        outputString = outputString.replacingOccurrences(of: "Displacement", with: "Disp.")
+        
+        return outputString
+    }
+    
 }
 
 struct SGammaParameters {

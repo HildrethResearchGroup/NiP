@@ -37,8 +37,8 @@ struct StagePositionView: View {
                 .frame(minWidth: 80, maxWidth: 80, alignment: .center)
                 .padding(.trailing)
             Picker("Vec. & Acc.", selection: $stageController.currentStageSGammaParameters, content: {
-                ForEach(StageSGammaParameters.allCases) { setting in
-                    Text(setting.rawValue).tag(setting.id)}
+                ForEach(StageSGammaParameters.allCases, id: \.self) { setting in
+                    Text(setting.displayString())}
                     
             })
         }

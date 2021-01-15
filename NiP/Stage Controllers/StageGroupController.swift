@@ -26,7 +26,7 @@ class StageGroupController: ObservableObject, ConnectableEquipment {
                 
                 // Send notification out that the controller is no longer nil and the stages should be ready to communicateto and control.
                 let nc = NotificationCenter.default
-                nc.post(name: Notification.Name(SCNotification_controllerConnected), object: self)
+                nc.post(name: Notification.Name.SCNotification_controllerConnected, object: self)
             }
         }
     }
