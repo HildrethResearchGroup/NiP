@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		445F25EF25B25479008C6E79 /* SGammaPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445F25EE25B25479008C6E79 /* SGammaPicker.swift */; };
 		446A368425A8D6B100801A84 /* StagePositionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446A368325A8D6B100801A84 /* StagePositionView.swift */; };
 		446A368725A8DB0100801A84 /* NumbersOnly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446A368625A8DB0100801A84 /* NumbersOnly.swift */; };
 		44D4079925A8ECAE00ADCB4F /* StageSGammaParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D4079825A8ECAE00ADCB4F /* StageSGammaParameters.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		445F25EE25B25479008C6E79 /* SGammaPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SGammaPicker.swift; sourceTree = "<group>"; };
 		446A368325A8D6B100801A84 /* StagePositionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StagePositionView.swift; sourceTree = "<group>"; };
 		446A368625A8DB0100801A84 /* NumbersOnly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumbersOnly.swift; sourceTree = "<group>"; };
 		44D4079825A8ECAE00ADCB4F /* StageSGammaParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageSGammaParameters.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				C02729DC2592F68E00E61400 /* ContentView.swift */,
 				C0E16E4325A82F97004E12B5 /* EquipmentConnectView.swift */,
 				446A368325A8D6B100801A84 /* StagePositionView.swift */,
+				445F25EE25B25479008C6E79 /* SGammaPicker.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -214,6 +217,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0E16E4025A8280F004E12B5 /* NotificationKeys.swift in Sources */,
+				445F25EF25B25479008C6E79 /* SGammaPicker.swift in Sources */,
 				C0B06DBD25A6C1D1003F5AE4 /* StageController.swift in Sources */,
 				446A368425A8D6B100801A84 /* StagePositionView.swift in Sources */,
 				C0762DDA25AFA26F002370C8 /* String_Extension.swift in Sources */,

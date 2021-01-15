@@ -51,6 +51,7 @@ struct StagePositionView: View {
     }
 }
 
+/*
 struct SGammaPicker: View {
     @Binding var sGammaParameter: StageSGammaParameters
     
@@ -63,6 +64,7 @@ struct SGammaPicker: View {
         }
     }
 }
+ */
 
 struct StagePositionView_Previews: PreviewProvider {
     
