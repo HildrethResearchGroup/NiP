@@ -43,6 +43,7 @@ class StageGroupController: ObservableObject, ConnectableEquipment {
     lazy var z = StageController(stageGroupController: nil, andName: "Z", inController: nil)
     var stageControllers: [StageController] = []
     
+    
     private var areAnyStagesMovingPublisher: AnyPublisher<Bool, Never> {
         Publishers.CombineLatest3(x.$isStageMoving, y.$isStageMoving, z.$isStageMoving)
             .map { xState, yState, zState in
@@ -55,7 +56,9 @@ class StageGroupController: ObservableObject, ConnectableEquipment {
             .eraseToAnyPublisher()
     }
     
+    
     @Published var areAnyStagesMoving: Bool = false
+    
     
     // MARK: Init and Setup
     init() {

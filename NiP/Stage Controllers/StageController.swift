@@ -15,7 +15,7 @@ class StageController: ObservableObject {
     let controller: XPSQ8Controller?
     let stageName:String
     let stage: Stage?
-    let stageGroupController: StageGroupController?
+    @Published var stageGroupController: StageGroupController?
     var stageGroup: StageGroup? {
         get { return stageGroupController?.stageGroup }
     }
@@ -41,14 +41,7 @@ class StageController: ObservableObject {
         }
     }
     @Published var currentPositionString:String = "??.???"
-    @Published public var currentStageSGammaParameters: StageSGammaParameters = .largeDisplacement {
-        didSet {
-            print("currentStageSGammaParameters = \(currentStageSGammaParameters)")
-            if currentStageSGammaParameters != oldValue {
-                self.setSGammaParameters(currentStageSGammaParameters)
-            }
-        }
-    }
+    @Published public var currentStageSGammaParameters: StageSGammaParameters = .largeDisplacement
     @Published public var isStageMoving = false
  
 
@@ -104,14 +97,41 @@ extension StageController {
      - Author: Owen Hildreth
     */
     func moveRelative(targetDisplacement: Double) {
-        controller?.dispatchQueue.async {
-            //stage.moveRelative(targetDisplacement: targetDisplacement)
-            do {
-                try self.stage?.moveRelative(targetDisplacement: targetDisplacement)
-            } catch {
-                print(error)
+        
+        /**
+         self.controller?.dispatchQueue.async {
+             //stage.moveRelative(targetDisplacement: targetDisplacement)
+             do {
+                 try self.stage?.moveRelative(targetDisplacement: targetDisplacement)
+             } catch {
+                 promise(Result.failure(error))
+             }
+         */
+        // Update state to tell any controllers that the stage is moving.
+        isStageMoving = true
+        
+        // Create a future to run the move command
+        let future = Future<Void, Error> { promise in
+            self.controller?.dispatchQueue.async {
+                //stage.moveRelative(targetDisplacement: targetDisplacement)
+                do {
+                    try self.stage?.moveRelative(targetDisplacement: targetDisplacement)
+                } catch {
+                    promise(Result.failure(error))
+                }
             }
         }
+        
+        // Run the move command through the future and update isStageMoving
+        future
+            .sink(receiveCompletion: {_ in
+                self.isStageMoving = false
+            }, receiveValue: {_ in
+                print("moveRelative for: \(self.stageName) is done at: \(DispatchTime.now())")
+    
+            })
+            .store(in: &subscribers)
+        
     } // END:  moveRelative
     
     
@@ -133,6 +153,7 @@ extension StageController {
      ````
      */
     func moveAbsolute(toLocation: Double) {
+        /**
         controller?.dispatchQueue.async {
             //stage.moveRelative(targetDisplacement: targetDisplacement)
             do {
@@ -141,6 +162,32 @@ extension StageController {
                 print(error)
             }
         }
+         */
+        
+        // Update state to tell any controllers that the stage is moving.
+        isStageMoving = true
+        
+        // Create a future to run the move command
+        let future = Future<Void, Error> { promise in
+            self.controller?.dispatchQueue.async {
+                //stage.moveRelative(targetDisplacement: targetDisplacement)
+                do {
+                    try self.stage?.moveAbsolute(toLocation: toLocation)
+                } catch {
+                    promise(Result.failure(error))
+                }
+            }
+        }
+        
+        // Run the move command through the future and update isStageMoving
+        future
+            .sink(receiveCompletion: {_ in
+                self.isStageMoving = false
+            }, receiveValue: {_ in
+                print("moveRelative for: \(self.stageName) is done at: \(DispatchTime.now())")
+            })
+            .store(in: &subscribers)
+        
     } // END: moveAbsolute
     
     
