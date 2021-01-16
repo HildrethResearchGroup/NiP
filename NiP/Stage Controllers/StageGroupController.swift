@@ -11,6 +11,7 @@ import XPSQ8Kit
 
 
 class StageGroupController: ObservableObject, ConnectableEquipment {
+    // MARK: Main XPS8 Objects
     var equipmentName = "XPSQ8"
     private var dispatchQueue: DispatchQueue
     private let identifier = "StageController"
@@ -33,24 +34,38 @@ class StageGroupController: ObservableObject, ConnectableEquipment {
     
     @Published var connectedToController = false
     
+    private var subscriptions: Set<AnyCancellable> = []
+    
+    // MARK: Stages
     var stageGroup: StageGroup?
     lazy var x:StageController = StageController(stageGroupController: nil, andName: "X", inController: nil)
     lazy var y = StageController(stageGroupController: nil, andName: "Y", inController: nil)
     lazy var z = StageController(stageGroupController: nil, andName: "Z", inController: nil)
     var stageControllers: [StageController] = []
     
+    private var areAnyStagesMovingPublisher: AnyPublisher<Bool, Never> {
+        Publishers.CombineLatest3(x.$isStageMoving, y.$isStageMoving, z.$isStageMoving)
+            .map { xState, yState, zState in
+                if xState == true { return true }
+                if yState == true { return true }
+                if zState == true { return true }
+                
+                return false
+            }
+            .eraseToAnyPublisher()
+    }
     
+    @Published var areAnyStagesMoving: Bool = false
+    
+    // MARK: Init and Setup
     init() {
         dispatchQueue = DispatchQueue(label: identifier, qos: .userInitiated)
         
     } // END: init()
     
-    
-    
     public func connectToEquipmentController() {
         controller = XPSQ8Controller(address: "192.168.0.254", port: 5001, identifier: "XPS8Q")
     }
-    
     
     /** Stages can only be created once the controller: XPSQ8Controller is not nil.
      This function creates the StageGroup and XYZ StageControllers and then puts the XYZ Stage Controllers into the stageControllers array once the XPSQ8Controller is not nil
@@ -60,6 +75,11 @@ class StageGroupController: ObservableObject, ConnectableEquipment {
         self.x =  StageController(stageGroupController: self, andName: "X", inController: controller)
         self.y =  StageController(stageGroupController: self, andName: "Y", inController: controller)
         self.z =  StageController(stageGroupController: self, andName: "Z", inController: controller)
+        
+        areAnyStagesMovingPublisher
+            .receive(on: RunLoop.main)
+            .assign(to: \.areAnyStagesMoving, on: self)
+            .store(in: &subscriptions)
     }
 }
 

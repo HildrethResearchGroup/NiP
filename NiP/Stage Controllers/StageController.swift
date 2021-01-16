@@ -11,7 +11,7 @@ import SwiftUI
 import XPSQ8Kit
 
 class StageController: ObservableObject {
-    // MARK: Main Objects
+    // MARK: Main XPS8 Objects
     let controller: XPSQ8Controller?
     let stageName:String
     let stage: Stage?
@@ -49,6 +49,7 @@ class StageController: ObservableObject {
             }
         }
     }
+    @Published public var isStageMoving = false
  
 
     // MARK: Init
@@ -141,7 +142,6 @@ extension StageController {
             }
         }
     } // END: moveAbsolute
-    
     
     
     
