@@ -11,6 +11,7 @@ import SwiftUI
 import XPSQ8Kit
 
 class StageController: ObservableObject {
+    // MARK: Main Objects
     let controller: XPSQ8Controller?
     let stageName:String
     let stage: Stage?
@@ -19,6 +20,7 @@ class StageController: ObservableObject {
         get { return stageGroupController?.stageGroup }
     }
     
+    // MARK: State Variables
     var subscribers = Set<AnyCancellable>()
     
     var monitorCurrentPosition = false {
@@ -39,19 +41,6 @@ class StageController: ObservableObject {
         }
     }
     @Published var currentPositionString:String = "??.???"
-    
-
-    func defaultNumberToStringFormatter() -> NumberFormatter {
-        let formatter = NumberFormatter()
-        formatter.usesSignificantDigits = true
-        formatter.minimumSignificantDigits = 5
-        formatter.maximumSignificantDigits = 5
-        formatter.notANumberSymbol = "??.?????"
-        
-        return formatter
-    }
-    
-    
     @Published public var currentStageSGammaParameters: StageSGammaParameters = .largeDisplacement {
         didSet {
             print("currentStageSGammaParameters = \(currentStageSGammaParameters)")
@@ -62,7 +51,7 @@ class StageController: ObservableObject {
     }
  
 
-    
+    // MARK: Init
     init(stageGroupController: StageGroupController?, andName stageNameIn: String, inController: XPSQ8Controller?) {
         controller = inController
         stageName = stageNameIn
@@ -78,6 +67,22 @@ class StageController: ObservableObject {
         updateCurrentPositionContinuously()
     }
 }
+
+
+// MARK: - Helper Functions
+extension StageController {
+    func defaultNumberToStringFormatter() -> NumberFormatter {
+        let formatter = NumberFormatter()
+        formatter.usesSignificantDigits = true
+        formatter.minimumSignificantDigits = 5
+        formatter.maximumSignificantDigits = 5
+        formatter.notANumberSymbol = "??.?????"
+        
+        return formatter
+    }
+}
+
+
 
 // MARK: - Moving Stages
 extension StageController {
