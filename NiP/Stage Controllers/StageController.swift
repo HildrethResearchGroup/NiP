@@ -43,6 +43,8 @@ class StageController: ObservableObject {
     @Published var currentPositionString:String = "??.???"
     @Published public var currentStageSGammaParameters: StageSGammaParameters = .largeDisplacement
     @Published public var isStageMoving = false
+    
+    var stageMovingState: StageMovingState = .notMoving
  
 
     // MARK: Init
@@ -215,9 +217,6 @@ extension StageController {
 
 // MARK: - Monitoring Stages
 extension StageController {
-    enum ControllerError: Error {
-        case communicationError
-    }
     
     func getCurrentPosition() -> Future<Double, Error> {
         let future = Future<Double, Error> { promise in
@@ -254,6 +253,55 @@ extension StageController {
                 print("done")
             }
         })
+    }
+    
+    func updateStageMovingStateContinuously() {
+        var continueUpdating = true
+        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true, block: { [self]timer  in
+            
+            if continueUpdating == false {
+                timer.invalidate()
+            }
+            
+            let future = updateStageMovingStateOnce()
+            
+            future
+                .receive(on: DispatchQueue.main)
+                .replaceError(with: .notMoving)
+                .sink(receiveCompletion: { _ in
+                    if self.stageMovingState == .notMoving {
+                        continueUpdating = false
+                    }
+                },
+                      receiveValue: {stageMovingState in
+                        self.stageMovingState = stageMovingState})
+                .store(in: &subscribers)
+        
+            
+        })
+    }
+    
+    func updateStageMovingStateOnce() -> Future<StageMovingState, Error> {
+        let future = Future<StageMovingState, Error> {promise in
+            self.controller?.dispatchQueue.async {
+                do {
+                    if let currentStateInt = try self.stage?.getMotionStatus() {
+                        switch currentStateInt {
+                        case 0:
+                            promise(Result.success(StageMovingState.notMoving))
+                        case 1:
+                            promise(Result.success(StageMovingState.moving))
+                        default:
+                            promise(Result.failure(ControllerError.getMotionStatusNonsenseValue))
+                        }
+                    }
+                } catch {
+                    promise(Result.failure(error))
+                }
+            }
+        } // END: creating future
+        
+      return future
     }
 }
 
