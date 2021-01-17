@@ -25,6 +25,7 @@ struct StagePositionView: View {
                 stageController.moveRelative(targetDisplacement: targetDisplacement)
             })
             { Text("Jog") }
+                .disabled(stageController.isStageMoving || stageController.controller == nil)
             TextField("-10.00", value: $targetDisplacement, formatter: configureFormatter())
                 .frame(minWidth: 80, maxWidth: 80, alignment: .center)
                 .padding(.trailing)
@@ -32,10 +33,12 @@ struct StagePositionView: View {
                 stageController.moveAbsolute(toLocation: targetPosition)
             })
             { Text("Move To") }
+                .disabled(stageController.isStageMoving || stageController.controller == nil)
             TextField("-10.00", value: $targetPosition, formatter: configureFormatter())
                 .frame(minWidth: 80, maxWidth: 80, alignment: .center)
                 .padding(.trailing)
             SGammaPicker(sGammaParameter: $stageController.currentStageSGammaParameters)
+                .disabled(stageController.controller == nil)
         }
         
     }
@@ -51,20 +54,19 @@ struct StagePositionView: View {
     }
 }
 
-/*
-struct SGammaPicker: View {
-    @Binding var sGammaParameter: StageSGammaParameters
+struct JogButton: View {
+    let stageController: StageController
+    var targetDisplacement: Double
+    @Binding var areAnyStageMoving: Bool
     
     var body: some View {
-        Picker("Vec. & Acc.", selection: $sGammaParameter) {
-            ForEach(StageSGammaParameters.allCases) { setting in
-                Text(setting.displayString())
-                    .tag(setting as StageSGammaParameters)
-            }
-        }
+        Button(action:{
+            stageController.moveRelative(targetDisplacement: targetDisplacement)
+        })
+        { Text("Jog") }
     }
 }
- */
+
 
 struct StagePositionView_Previews: PreviewProvider {
     

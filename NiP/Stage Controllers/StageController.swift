@@ -12,7 +12,7 @@ import XPSQ8Kit
 
 class StageController: ObservableObject {
     // MARK: Main XPS8 Objects
-    let controller: XPSQ8Controller?
+    @Published var controller: XPSQ8Controller?
     let stageName:String
     let stage: Stage?
     @Published var stageGroupController: StageGroupController?
