@@ -23,7 +23,7 @@ struct ContentView: View {
         .toolbar{
             ToolbarItem(placement: .primaryAction) {
 
-                Button(action:{print("test")})
+                Button(action:{self.stageGroupController.connectToEquipmentController()})
                 {ZStack {
                     Toolbar_XPQ8(connectedToController: $stageGroupController.connectedToController)
                     //Toolbar_XPQ8()

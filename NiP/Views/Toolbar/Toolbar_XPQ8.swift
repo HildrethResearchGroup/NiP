@@ -14,7 +14,7 @@ struct Toolbar_XPQ8: View {
     var body: some View {
         ZStack {
             connectionIndicator()
-                .offset(x: -15, y: -8)
+                .offset(x: -16, y: -8)
             Path{ path in
                 path.move(to: CGPoint(x: 15.81, y: 0))
                 path.addLine(to: CGPoint(x: 15.81, y: 13.45))
