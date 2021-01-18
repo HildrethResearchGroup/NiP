@@ -20,8 +20,24 @@ struct ContentView: View {
         }
         .fixedSize()
         .padding()
+        .toolbar{
+            ToolbarItem(placement: .primaryAction) {
+
+                Button(action:{print("test")})
+                {ZStack {
+                    Toolbar_XPQ8(connectedToController: $stageGroupController.connectedToController)
+                    //Toolbar_XPQ8()
+                    }
+                }
+            }
+            //ToolBars(add: {print("add")}, sort: {print("sort")}, filter: {print("afilterdd")})
+        }
     }
     
+    
+    class customImage: NSImage {
+        
+    }
     
 }
 

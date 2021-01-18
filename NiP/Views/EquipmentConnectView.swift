@@ -11,6 +11,8 @@ struct EquipmentConnectView: View {
     
     @ObservedObject var stageGroupController: StageGroupController
     
+    
+    
     var body: some View {
         VStack {
             HStack {
