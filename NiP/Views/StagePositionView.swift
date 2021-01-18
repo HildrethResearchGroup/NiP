@@ -25,7 +25,7 @@ struct StagePositionView: View {
                 stageController.moveRelative(targetDisplacement: targetDisplacement)
             })
             { Text("Jog") }
-                .disabled(stageController.isStageMoving || stageController.controller == nil)
+            .disabled(stageController.stageState != .idle)
             TextField("-10.00", value: $targetDisplacement, formatter: configureFormatter())
                 .frame(minWidth: 80, maxWidth: 80, alignment: .center)
                 .padding(.trailing)
@@ -33,7 +33,7 @@ struct StagePositionView: View {
                 stageController.moveAbsolute(toLocation: targetPosition)
             })
             { Text("Move To") }
-                .disabled(stageController.isStageMoving || stageController.controller == nil)
+                .disabled(stageController.stageState != .idle)
             TextField("-10.00", value: $targetPosition, formatter: configureFormatter())
                 .frame(minWidth: 80, maxWidth: 80, alignment: .center)
                 .padding(.trailing)

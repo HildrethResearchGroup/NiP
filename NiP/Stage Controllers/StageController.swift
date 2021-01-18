@@ -44,7 +44,16 @@ class StageController: ObservableObject {
     @Published public var currentStageSGammaParameters: StageSGammaParameters = .largeDisplacement
     @Published public var isStageMoving = false
     
+    var shouldUpdatStageMovingState = false
     var stageMovingState: StageMovingState = .notMoving
+    
+    var stageState: StageState {
+        get {
+            if controller == nil {return .notConnected}
+            if stageMovingState == .moving {return .busy}
+            return .idle
+        }
+    }
  
 
     // MARK: Init
@@ -73,6 +82,9 @@ extension StageController {
         formatter.minimumSignificantDigits = 5
         formatter.maximumSignificantDigits = 5
         formatter.notANumberSymbol = "??.?????"
+        formatter.perMillSymbol = ","
+        formatter.usesGroupingSeparator = true
+        
         
         return formatter
     }
@@ -256,10 +268,10 @@ extension StageController {
     }
     
     func updateStageMovingStateContinuously() {
-        var continueUpdating = true
+        shouldUpdatStageMovingState = true
         Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true, block: { [self]timer  in
             
-            if continueUpdating == false {
+            if shouldUpdatStageMovingState == false {
                 timer.invalidate()
             }
             
@@ -270,7 +282,7 @@ extension StageController {
                 .replaceError(with: .notMoving)
                 .sink(receiveCompletion: { _ in
                     if self.stageMovingState == .notMoving {
-                        continueUpdating = false
+                        self.shouldUpdatStageMovingState = false
                     }
                 },
                       receiveValue: {stageMovingState in
