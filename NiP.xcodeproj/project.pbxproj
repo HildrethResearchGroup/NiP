@@ -21,6 +21,7 @@
 		C02729F22592F7CD00E61400 /* StageGroupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02729F12592F7CD00E61400 /* StageGroupController.swift */; };
 		C02729F72592FDE500E61400 /* StageGroup_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02729F62592FDE500E61400 /* StageGroup_Extension.swift */; };
 		C036151F25B6A556009A9B59 /* EquipmentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C036151E25B6A556009A9B59 /* EquipmentController.swift */; };
+		C036152225B6AC48009A9B59 /* DCWaveformGeneratorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C036152125B6AC48009A9B59 /* DCWaveformGeneratorController.swift */; };
 		C05D4AB825B407CB00DD95E1 /* ControllerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05D4AB725B407CB00DD95E1 /* ControllerError.swift */; };
 		C05D4ABC25B4080C00DD95E1 /* StageStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05D4ABB25B4080C00DD95E1 /* StageStatus.swift */; };
 		C05EA3232593E61300F4D0AD /* StageParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05EA3222593E61300F4D0AD /* StageParameters.swift */; };
@@ -65,6 +66,7 @@
 		C02729F12592F7CD00E61400 /* StageGroupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageGroupController.swift; sourceTree = "<group>"; };
 		C02729F62592FDE500E61400 /* StageGroup_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageGroup_Extension.swift; sourceTree = "<group>"; };
 		C036151E25B6A556009A9B59 /* EquipmentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentController.swift; sourceTree = "<group>"; };
+		C036152125B6AC48009A9B59 /* DCWaveformGeneratorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCWaveformGeneratorController.swift; sourceTree = "<group>"; };
 		C05D4AB725B407CB00DD95E1 /* ControllerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerError.swift; sourceTree = "<group>"; };
 		C05D4ABB25B4080C00DD95E1 /* StageStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageStatus.swift; sourceTree = "<group>"; };
 		C05EA3222593E61300F4D0AD /* StageParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageParameters.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				C0DEC01125B6036E0052CF7A /* WaveformGeneratorController.swift */,
+				C036152125B6AC48009A9B59 /* DCWaveformGeneratorController.swift */,
 			);
 			path = "Waveform Generator Controllers";
 			sourceTree = "<group>";
@@ -314,6 +317,7 @@
 				446A368725A8DB0100801A84 /* NumbersOnly.swift in Sources */,
 				C0E16E4825A83138004E12B5 /* Protocol_ConnectableEquipment.swift in Sources */,
 				C0E16E4425A82F97004E12B5 /* EquipmentConnectView.swift in Sources */,
+				C036152225B6AC48009A9B59 /* DCWaveformGeneratorController.swift in Sources */,
 				C02729F22592F7CD00E61400 /* StageGroupController.swift in Sources */,
 				C006C68325B5243400B47256 /* ToolBars.swift in Sources */,
 				C02729DD2592F68E00E61400 /* ContentView.swift in Sources */,
