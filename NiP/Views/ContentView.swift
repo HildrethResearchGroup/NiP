@@ -13,7 +13,7 @@ struct ContentView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            EquipmentConnectView(stageGroupController: stageGroupController)
+            EquipmentConnectView(equipmentController: stageGroupController)
             StagePositionView(stageName: "X",stageController: stageGroupController.x)
             StagePositionView(stageName: "Y", stageController: stageGroupController.y)
             StagePositionView(stageName: "Z", stageController: stageGroupController.z)

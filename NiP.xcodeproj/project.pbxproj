@@ -25,10 +25,27 @@
 		C05EA3232593E61300F4D0AD /* StageParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05EA3222593E61300F4D0AD /* StageParameters.swift */; };
 		C0762DDA25AFA26F002370C8 /* String_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0762DD925AFA26F002370C8 /* String_Extension.swift */; };
 		C0B06DBD25A6C1D1003F5AE4 /* StageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B06DBC25A6C1D1003F5AE4 /* StageController.swift */; };
+		C0DEC01225B6036E0052CF7A /* WaveformGeneratorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DEC01125B6036E0052CF7A /* WaveformGeneratorController.swift */; };
+		C0DEC02525B60D390052CF7A /* SwiftVISA.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0DEC02425B60D390052CF7A /* SwiftVISA.framework */; };
+		C0DEC02625B60D390052CF7A /* SwiftVISA.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C0DEC02425B60D390052CF7A /* SwiftVISA.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C0E16E4025A8280F004E12B5 /* NotificationKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E16E3F25A8280F004E12B5 /* NotificationKeys.swift */; };
 		C0E16E4425A82F97004E12B5 /* EquipmentConnectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E16E4325A82F97004E12B5 /* EquipmentConnectView.swift */; };
 		C0E16E4825A83138004E12B5 /* Protocol_ConnectableEquipment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E16E4725A83138004E12B5 /* Protocol_ConnectableEquipment.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C0DEC02725B60D390052CF7A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				C0DEC02625B60D390052CF7A /* SwiftVISA.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		445F25EE25B25479008C6E79 /* SGammaPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SGammaPicker.swift; sourceTree = "<group>"; };
@@ -51,6 +68,8 @@
 		C05EA3222593E61300F4D0AD /* StageParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageParameters.swift; sourceTree = "<group>"; };
 		C0762DD925AFA26F002370C8 /* String_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String_Extension.swift; sourceTree = "<group>"; };
 		C0B06DBC25A6C1D1003F5AE4 /* StageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageController.swift; sourceTree = "<group>"; };
+		C0DEC01125B6036E0052CF7A /* WaveformGeneratorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveformGeneratorController.swift; sourceTree = "<group>"; };
+		C0DEC02425B60D390052CF7A /* SwiftVISA.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftVISA.framework; path = ../../../../../Library/Frameworks/SwiftVISA.framework; sourceTree = "<group>"; };
 		C0E16E3F25A8280F004E12B5 /* NotificationKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationKeys.swift; sourceTree = "<group>"; };
 		C0E16E4325A82F97004E12B5 /* EquipmentConnectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentConnectView.swift; sourceTree = "<group>"; };
 		C0E16E4725A83138004E12B5 /* Protocol_ConnectableEquipment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol_ConnectableEquipment.swift; sourceTree = "<group>"; };
@@ -62,6 +81,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C02729EF2592F79B00E61400 /* XPSQ8Kit in Frameworks */,
+				C0DEC02525B60D390052CF7A /* SwiftVISA.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,6 +102,7 @@
 			children = (
 				C02729D92592F68E00E61400 /* NiP */,
 				C02729D82592F68E00E61400 /* Products */,
+				C0DEC02325B60D390052CF7A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,6 +120,7 @@
 				C0E16E3E25A827FB004E12B5 /* Helper Files */,
 				C02729EB2592F6DA00E61400 /* Stage Controllers */,
 				C02729EC2592F6EC00E61400 /* Views */,
+				C0DEC01025B603470052CF7A /* Waveform Generator Controllers */,
 				C02729DA2592F68E00E61400 /* NiPApp.swift */,
 				C02729DE2592F68E00E61400 /* Assets.xcassets */,
 				C02729E32592F68E00E61400 /* Info.plist */,
@@ -148,6 +170,22 @@
 			path = Errors;
 			sourceTree = "<group>";
 		};
+		C0DEC01025B603470052CF7A /* Waveform Generator Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C0DEC01125B6036E0052CF7A /* WaveformGeneratorController.swift */,
+			);
+			path = "Waveform Generator Controllers";
+			sourceTree = "<group>";
+		};
+		C0DEC02325B60D390052CF7A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C0DEC02425B60D390052CF7A /* SwiftVISA.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C0E16E3E25A827FB004E12B5 /* Helper Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -179,6 +217,7 @@
 				C02729D32592F68E00E61400 /* Sources */,
 				C02729D42592F68E00E61400 /* Frameworks */,
 				C02729D52592F68E00E61400 /* Resources */,
+				C0DEC02725B60D390052CF7A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -245,6 +284,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0E16E4025A8280F004E12B5 /* NotificationKeys.swift in Sources */,
+				C0DEC01225B6036E0052CF7A /* WaveformGeneratorController.swift in Sources */,
 				445F25EF25B25479008C6E79 /* SGammaPicker.swift in Sources */,
 				C0B06DBD25A6C1D1003F5AE4 /* StageController.swift in Sources */,
 				446A368425A8D6B100801A84 /* StagePositionView.swift in Sources */,
@@ -394,6 +434,10 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"NiP/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(USER_LIBRARY_DIR)/Frameworks",
+				);
 				INFOPLIST_FILE = NiP/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -418,6 +462,10 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"NiP/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(USER_LIBRARY_DIR)/Frameworks",
+				);
 				INFOPLIST_FILE = NiP/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 import XPSQ8Kit
+import SwiftUI
 
 
 class StageGroupController: ObservableObject, ConnectableEquipment {
@@ -33,6 +34,7 @@ class StageGroupController: ObservableObject, ConnectableEquipment {
     }
     
     @Published var connectedToController = false
+    @Published var equipmentState: EquipmentState = .notConnected
     
     private var subscriptions: Set<AnyCancellable> = []
     
@@ -43,6 +45,9 @@ class StageGroupController: ObservableObject, ConnectableEquipment {
     lazy var z = StageController(stageGroupController: nil, andName: "Z", inController: nil)
     var stageControllers: [StageController] = []
     
+    
+    
+    @Published var areAnyStagesMoving: Bool = false
     
     private var areAnyStagesMovingPublisher: AnyPublisher<Bool, Never> {
         Publishers.CombineLatest3(x.$isStageMoving, y.$isStageMoving, z.$isStageMoving)
@@ -56,9 +61,16 @@ class StageGroupController: ObservableObject, ConnectableEquipment {
             .eraseToAnyPublisher()
     }
     
-    
-    @Published var areAnyStagesMoving: Bool = false
-    
+    private var determineEquipmentStatePublisher: AnyPublisher<EquipmentState, Never> {
+        Publishers.CombineLatest(self.$areAnyStagesMoving, self.$connectedToController)
+            .map { stagesMoving, controllerConnection in
+                if controllerConnection == false {return .notConnected}
+                if stagesMoving == true {return .busy}
+                
+                return .idle
+            }
+            .eraseToAnyPublisher()
+    }
     
     // MARK: Init and Setup
     init() {
@@ -83,19 +95,17 @@ class StageGroupController: ObservableObject, ConnectableEquipment {
             .receive(on: RunLoop.main)
             .assign(to: \.areAnyStagesMoving, on: self)
             .store(in: &subscriptions)
+        
+        determineEquipmentStatePublisher
+            .receive(on: RunLoop.main)
+            .assign(to: \.equipmentState, on: self)
+            .store(in: &subscriptions)
     }
 }
 
 
 // MARK: - Moving Stages
 extension StageGroupController {
-    
-    
-    
-    
-    
-    
-    
     
 } // END:  Moving Stages Extension
 

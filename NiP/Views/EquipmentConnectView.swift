@@ -24,6 +24,7 @@ struct EquipmentConnectView: View {
         }
     }
     
+    /**
     func connectionIndicator() -> some View {
         let color: Color
         switch stageGroupController.connectedToController {
@@ -31,6 +32,25 @@ struct EquipmentConnectView: View {
             color = Color.green
         default:
             color = Color.red
+        }
+        
+        let circleView = Circle()
+            .fill(color)
+            .frame(width: 18, height: 18)
+        
+        return circleView
+    }
+ */
+    
+    func connectionIndicator() -> some View {
+        let color: Color
+        switch stageGroupController.equipmentState {
+        case .notConnected:
+            color = Color.red
+        case .busy:
+            color = Color.purple
+        case .idle:
+            color = Color.green
         }
         
         let circleView = Circle()
