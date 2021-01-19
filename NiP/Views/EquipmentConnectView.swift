@@ -9,17 +9,15 @@ import SwiftUI
 
 struct EquipmentConnectView: View {
     
-    @ObservedObject var stageGroupController: StageGroupController
-    
-    
+    @ObservedObject var equipmentController: EquipmentController
     
     var body: some View {
         VStack {
             HStack {
                 connectionIndicator()
-                Button(action: {self.stageGroupController.connectToEquipmentController()})
-                    { Text("Connect") }.disabled(stageGroupController.connectedToController)
-                Text(stageGroupController.equipmentName)
+                Button(action: {self.equipmentController.connectToEquipmentController()})
+                    { Text("Connect") }.disabled(equipmentController.connectedToController)
+                Text(equipmentController.equipmentName)
             }
         }
     }
@@ -44,7 +42,7 @@ struct EquipmentConnectView: View {
     
     func connectionIndicator() -> some View {
         let color: Color
-        switch stageGroupController.equipmentState {
+        switch equipmentController.equipmentState {
         case .notConnected:
             color = Color.red
         case .busy:
@@ -67,7 +65,7 @@ struct EquipmentConnectView: View {
 struct EquipmentConnectView_Previews: PreviewProvider {
     static var previews: some View {
         let controller = StageGroupController()
-        EquipmentConnectView(stageGroupController: controller)
+        EquipmentConnectView(equipmentController: controller)
     }
 }
 

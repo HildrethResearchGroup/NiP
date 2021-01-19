@@ -20,6 +20,7 @@
 		C02729EF2592F79B00E61400 /* XPSQ8Kit in Frameworks */ = {isa = PBXBuildFile; productRef = C02729EE2592F79B00E61400 /* XPSQ8Kit */; };
 		C02729F22592F7CD00E61400 /* StageGroupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02729F12592F7CD00E61400 /* StageGroupController.swift */; };
 		C02729F72592FDE500E61400 /* StageGroup_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02729F62592FDE500E61400 /* StageGroup_Extension.swift */; };
+		C036151F25B6A556009A9B59 /* EquipmentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C036151E25B6A556009A9B59 /* EquipmentController.swift */; };
 		C05D4AB825B407CB00DD95E1 /* ControllerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05D4AB725B407CB00DD95E1 /* ControllerError.swift */; };
 		C05D4ABC25B4080C00DD95E1 /* StageStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05D4ABB25B4080C00DD95E1 /* StageStatus.swift */; };
 		C05EA3232593E61300F4D0AD /* StageParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05EA3222593E61300F4D0AD /* StageParameters.swift */; };
@@ -63,6 +64,7 @@
 		C02729E42592F68E00E61400 /* NiP.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NiP.entitlements; sourceTree = "<group>"; };
 		C02729F12592F7CD00E61400 /* StageGroupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageGroupController.swift; sourceTree = "<group>"; };
 		C02729F62592FDE500E61400 /* StageGroup_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageGroup_Extension.swift; sourceTree = "<group>"; };
+		C036151E25B6A556009A9B59 /* EquipmentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentController.swift; sourceTree = "<group>"; };
 		C05D4AB725B407CB00DD95E1 /* ControllerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerError.swift; sourceTree = "<group>"; };
 		C05D4ABB25B4080C00DD95E1 /* StageStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageStatus.swift; sourceTree = "<group>"; };
 		C05EA3222593E61300F4D0AD /* StageParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageParameters.swift; sourceTree = "<group>"; };
@@ -117,10 +119,9 @@
 		C02729D92592F68E00E61400 /* NiP */ = {
 			isa = PBXGroup;
 			children = (
+				C036151C25B6A4D8009A9B59 /* Equipment Controllers */,
 				C0E16E3E25A827FB004E12B5 /* Helper Files */,
-				C02729EB2592F6DA00E61400 /* Stage Controllers */,
 				C02729EC2592F6EC00E61400 /* Views */,
-				C0DEC01025B603470052CF7A /* Waveform Generator Controllers */,
 				C02729DA2592F68E00E61400 /* NiPApp.swift */,
 				C02729DE2592F68E00E61400 /* Assets.xcassets */,
 				C02729E32592F68E00E61400 /* Info.plist */,
@@ -141,8 +142,7 @@
 		C02729EB2592F6DA00E61400 /* Stage Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				C05D4AB625B407B700DD95E1 /* Errors */,
-				C0E16E4625A8311B004E12B5 /* Protocols and Extensions */,
+				C036151D25B6A4F8009A9B59 /* Prot, Etx. Enums */,
 				C02729F12592F7CD00E61400 /* StageGroupController.swift */,
 				C05EA3222593E61300F4D0AD /* StageParameters.swift */,
 				C0B06DBC25A6C1D1003F5AE4 /* StageController.swift */,
@@ -160,6 +160,28 @@
 				445F25EE25B25479008C6E79 /* SGammaPicker.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		C036151C25B6A4D8009A9B59 /* Equipment Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C036151E25B6A556009A9B59 /* EquipmentController.swift */,
+				C0E16E4625A8311B004E12B5 /* Protocols and Extensions */,
+				C05D4AB625B407B700DD95E1 /* Errors */,
+				C0DEC01025B603470052CF7A /* Waveform Generator Controllers */,
+				C02729EB2592F6DA00E61400 /* Stage Controllers */,
+			);
+			path = "Equipment Controllers";
+			sourceTree = "<group>";
+		};
+		C036151D25B6A4F8009A9B59 /* Prot, Etx. Enums */ = {
+			isa = PBXGroup;
+			children = (
+				C02729F62592FDE500E61400 /* StageGroup_Extension.swift */,
+				44D4079825A8ECAE00ADCB4F /* StageSGammaParameters.swift */,
+				C05D4ABB25B4080C00DD95E1 /* StageStatus.swift */,
+			);
+			path = "Prot, Etx. Enums";
 			sourceTree = "<group>";
 		};
 		C05D4AB625B407B700DD95E1 /* Errors */ = {
@@ -199,10 +221,7 @@
 		C0E16E4625A8311B004E12B5 /* Protocols and Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				C02729F62592FDE500E61400 /* StageGroup_Extension.swift */,
 				C0E16E4725A83138004E12B5 /* Protocol_ConnectableEquipment.swift */,
-				44D4079825A8ECAE00ADCB4F /* StageSGammaParameters.swift */,
-				C05D4ABB25B4080C00DD95E1 /* StageStatus.swift */,
 			);
 			path = "Protocols and Extensions";
 			sourceTree = "<group>";
@@ -287,6 +306,7 @@
 				C0DEC01225B6036E0052CF7A /* WaveformGeneratorController.swift in Sources */,
 				445F25EF25B25479008C6E79 /* SGammaPicker.swift in Sources */,
 				C0B06DBD25A6C1D1003F5AE4 /* StageController.swift in Sources */,
+				C036151F25B6A556009A9B59 /* EquipmentController.swift in Sources */,
 				446A368425A8D6B100801A84 /* StagePositionView.swift in Sources */,
 				C05D4ABC25B4080C00DD95E1 /* StageStatus.swift in Sources */,
 				C0762DDA25AFA26F002370C8 /* String_Extension.swift in Sources */,

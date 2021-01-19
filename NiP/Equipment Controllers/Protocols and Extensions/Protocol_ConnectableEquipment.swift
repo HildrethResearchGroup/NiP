@@ -7,12 +7,6 @@
 import Combine
 import SwiftUI
 
-protocol ConnectableEquipment: ObservableObject {
-    func connectToEquipmentController()
-    var equipmentState: EquipmentState {get set}
-    var equipmentName: String {get set}
-}
-
 
 enum connectionState {
     case connected

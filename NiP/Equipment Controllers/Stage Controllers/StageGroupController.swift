@@ -11,9 +11,9 @@ import XPSQ8Kit
 import SwiftUI
 
 
-class StageGroupController: ObservableObject, ConnectableEquipment {
+class StageGroupController: EquipmentController {
     // MARK: Main XPS8 Objects
-    var equipmentName = "XPSQ8"
+    //var equipmentName = "XPSQ8"
     private var dispatchQueue: DispatchQueue
     private let identifier = "StageController"
     
@@ -33,10 +33,7 @@ class StageGroupController: ObservableObject, ConnectableEquipment {
         }
     }
     
-    @Published var connectedToController = false
-    @Published var equipmentState: EquipmentState = .notConnected
     
-    private var subscriptions: Set<AnyCancellable> = []
     
     // MARK: Stages
     var stageGroup: StageGroup?
@@ -74,11 +71,13 @@ class StageGroupController: ObservableObject, ConnectableEquipment {
     
     // MARK: Init and Setup
     init() {
+        
         dispatchQueue = DispatchQueue(label: identifier, qos: .userInitiated)
+        super.init(equipmentName: "XPSQ8")
         
     } // END: init()
     
-    public func connectToEquipmentController() {
+    override public func connectToEquipmentController() {
         controller = XPSQ8Controller(address: "192.168.0.254", port: 5001, identifier: "XPS8Q")
     }
     

@@ -7,3 +7,12 @@
 
 import Foundation
 import SwiftVISA
+
+
+class WaveformGeneratorController: EquipmentController {
+    
+    
+    init() {
+        
+    }
+}
