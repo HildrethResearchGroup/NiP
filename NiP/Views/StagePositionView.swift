@@ -25,7 +25,9 @@ struct StagePositionView: View {
                 stageController.moveRelative(targetDisplacement: targetDisplacement)
             })
             { Text("Jog") }
-            .disabled(stageController.stageState != .idle)
+                .disabled(stageController.stageState != .idle)
+                .help("Jog Stage by \(targetDisplacement) mm")
+            
             TextField("-10.00", value: $targetDisplacement, formatter: configureFormatter())
                 .frame(minWidth: 80, maxWidth: 80, alignment: .center)
                 .padding(.trailing)
@@ -34,11 +36,13 @@ struct StagePositionView: View {
             })
             { Text("Move To") }
                 .disabled(stageController.stageState != .idle)
+                .help("Move Stage to \(targetPosition) mm")
             TextField("-10.00", value: $targetPosition, formatter: configureFormatter())
                 .frame(minWidth: 80, maxWidth: 80, alignment: .center)
                 .padding(.trailing)
             SGammaPicker(sGammaParameter: $stageController.currentStageSGammaParameters)
                 .disabled(stageController.controller == nil)
+                .help("Set velocity and acceleration")
         }
         
     }

@@ -9,10 +9,21 @@ import SwiftUI
 
 @main
 struct NiPApp: App {
+    let userSettings = UserSettings()
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(userSettings: userSettings)
+                .environmentObject(userSettings)
         }
+        
+        #if os(macOS)
+        Settings {
+            PreferencesPanel()
+                .environmentObject(userSettings)
+        }
+        #endif
     }
 }
+
+

@@ -15,7 +15,7 @@ class DCWaveformGeneratorController: EquipmentController, WaveformController {
     // MARK: - Properties
     var identifier: String // = "USB0::0x0957::0x2607::MY52200879::INSTR"
     static var minimumDelay: UInt32 = 2_000_000
-    var voltage = 0.0 {
+    @Published var voltage = 0.0 {
         didSet {
             do {
                 try updateVoltage(voltage)
@@ -26,8 +26,8 @@ class DCWaveformGeneratorController: EquipmentController, WaveformController {
     private let startupVoltage = 0.0
     private let turnedOffVoltage = 0.0
     private var instrument: MessageBasedInstrument?
-    var outputChannel: UInt
-    var waveformType: WaveformType = .DC {
+    @Published var outputChannel: UInt
+    @Published var waveformType: WaveformType = .DC {
         didSet {
             do {
                 try updateWaveform(waveformType)
@@ -38,7 +38,7 @@ class DCWaveformGeneratorController: EquipmentController, WaveformController {
     }
     
     
-    var impedence: ImpedenceSetting = .infinite {
+    @Published var impedence: ImpedenceSetting = .infinite {
         didSet {
             do {
                 try updateImpedence(impedence)
@@ -56,23 +56,18 @@ class DCWaveformGeneratorController: EquipmentController, WaveformController {
     }
     
     
+    
+    
     // MARK: - Initializers
     required init(identifier: String, outputChannel: UInt = 1) {
-        
         print("Initilize instrument")
-
         self.identifier = identifier
         
         self.outputChannel = outputChannel
         self.waveformType = .DC
-        
-        
-        super.init(equipmentName: "Waveform")
+        super.init(equipmentName: "DC Waveform")
     }
     
-    func updateWaveformSettings() {
-        
-    }
     
     override func connectToEquipmentController() {
         

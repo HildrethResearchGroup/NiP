@@ -8,7 +8,17 @@
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject var stageGroupController = StageGroupController()
+    let userSettings: UserSettings
+    @ObservedObject var stageGroupController: StageGroupController
+    @ObservedObject var waveformController: DCWaveformGeneratorController
+    
+    init(userSettings: UserSettings) {
+        self.userSettings = userSettings
+        
+        self.stageGroupController  = StageGroupController()
+        self.waveformController = DCWaveformGeneratorController(identifier: userSettings.waveformIdentifier)
+    }
+    
     
     
     var body: some View {
@@ -28,21 +38,16 @@ struct ContentView: View {
                     Toolbar_XPQ8(connectedToController: $stageGroupController.connectedToController)
                     //Toolbar_XPQ8()
                     }
-                }
+                }.help("Connect \(stageGroupController.equipmentName)")
             }
             //ToolBars(add: {print("add")}, sort: {print("sort")}, filter: {print("afilterdd")})
         }
     }
-    
-    
-    class customImage: NSImage {
-        
-    }
-    
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        let userSettings = UserSettings()
+        ContentView(userSettings: userSettings)
     }
 }

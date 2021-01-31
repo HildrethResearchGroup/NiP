@@ -17,6 +17,7 @@ struct EquipmentConnectView: View {
                 connectionIndicator()
                 Button(action: {self.equipmentController.connectToEquipmentController()})
                     { Text("Connect") }.disabled(equipmentController.connectedToController)
+                    .help("Connect \(equipmentController.equipmentName)")
                 Text(equipmentController.equipmentName)
             }
         }

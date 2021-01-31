@@ -26,6 +26,7 @@
 		C05D4ABC25B4080C00DD95E1 /* StageStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05D4ABB25B4080C00DD95E1 /* StageStatus.swift */; };
 		C05EA3232593E61300F4D0AD /* StageParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05EA3222593E61300F4D0AD /* StageParameters.swift */; };
 		C0762DDA25AFA26F002370C8 /* String_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0762DD925AFA26F002370C8 /* String_Extension.swift */; };
+		C0840E9325C66A100024F719 /* PreferencesPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0840E9225C66A100024F719 /* PreferencesPanel.swift */; };
 		C0B06DBD25A6C1D1003F5AE4 /* StageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B06DBC25A6C1D1003F5AE4 /* StageController.swift */; };
 		C0DEC01225B6036E0052CF7A /* WaveformGeneratorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DEC01125B6036E0052CF7A /* WaveformGeneratorController.swift */; };
 		C0DEC02525B60D390052CF7A /* SwiftVISA.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0DEC02425B60D390052CF7A /* SwiftVISA.framework */; };
@@ -33,6 +34,7 @@
 		C0E16E4025A8280F004E12B5 /* NotificationKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E16E3F25A8280F004E12B5 /* NotificationKeys.swift */; };
 		C0E16E4425A82F97004E12B5 /* EquipmentConnectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E16E4325A82F97004E12B5 /* EquipmentConnectView.swift */; };
 		C0E16E4825A83138004E12B5 /* Protocol_ConnectableEquipment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E16E4725A83138004E12B5 /* Protocol_ConnectableEquipment.swift */; };
+		C0F2362825C4B8EE00AA29E5 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F2362725C4B8EE00AA29E5 /* UserSettings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -71,12 +73,14 @@
 		C05D4ABB25B4080C00DD95E1 /* StageStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageStatus.swift; sourceTree = "<group>"; };
 		C05EA3222593E61300F4D0AD /* StageParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageParameters.swift; sourceTree = "<group>"; };
 		C0762DD925AFA26F002370C8 /* String_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String_Extension.swift; sourceTree = "<group>"; };
+		C0840E9225C66A100024F719 /* PreferencesPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesPanel.swift; sourceTree = "<group>"; };
 		C0B06DBC25A6C1D1003F5AE4 /* StageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageController.swift; sourceTree = "<group>"; };
 		C0DEC01125B6036E0052CF7A /* WaveformGeneratorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveformGeneratorController.swift; sourceTree = "<group>"; };
 		C0DEC02425B60D390052CF7A /* SwiftVISA.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftVISA.framework; path = ../../../../../Library/Frameworks/SwiftVISA.framework; sourceTree = "<group>"; };
 		C0E16E3F25A8280F004E12B5 /* NotificationKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationKeys.swift; sourceTree = "<group>"; };
 		C0E16E4325A82F97004E12B5 /* EquipmentConnectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentConnectView.swift; sourceTree = "<group>"; };
 		C0E16E4725A83138004E12B5 /* Protocol_ConnectableEquipment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol_ConnectableEquipment.swift; sourceTree = "<group>"; };
+		C0F2362725C4B8EE00AA29E5 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +125,7 @@
 		C02729D92592F68E00E61400 /* NiP */ = {
 			isa = PBXGroup;
 			children = (
+				C0F2362425C4B8BE00AA29E5 /* User Defaults */,
 				C036151C25B6A4D8009A9B59 /* Equipment Controllers */,
 				C0E16E3E25A827FB004E12B5 /* Helper Files */,
 				C02729EC2592F6EC00E61400 /* Views */,
@@ -155,6 +160,7 @@
 		C02729EC2592F6EC00E61400 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C0840E8F25C669D10024F719 /* Preferences */,
 				C006C68525B52EF300B47256 /* Toolbar */,
 				C02729DC2592F68E00E61400 /* ContentView.swift */,
 				C0E16E4325A82F97004E12B5 /* EquipmentConnectView.swift */,
@@ -194,6 +200,14 @@
 			path = Errors;
 			sourceTree = "<group>";
 		};
+		C0840E8F25C669D10024F719 /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				C0840E9225C66A100024F719 /* PreferencesPanel.swift */,
+			);
+			path = Preferences;
+			sourceTree = "<group>";
+		};
 		C0DEC01025B603470052CF7A /* Waveform Generator Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -227,6 +241,14 @@
 				C0E16E4725A83138004E12B5 /* Protocol_ConnectableEquipment.swift */,
 			);
 			path = "Protocols and Extensions";
+			sourceTree = "<group>";
+		};
+		C0F2362425C4B8BE00AA29E5 /* User Defaults */ = {
+			isa = PBXGroup;
+			children = (
+				C0F2362725C4B8EE00AA29E5 /* UserSettings.swift */,
+			);
+			path = "User Defaults";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -321,11 +343,13 @@
 				C02729F22592F7CD00E61400 /* StageGroupController.swift in Sources */,
 				C006C68325B5243400B47256 /* ToolBars.swift in Sources */,
 				C02729DD2592F68E00E61400 /* ContentView.swift in Sources */,
+				C0840E9325C66A100024F719 /* PreferencesPanel.swift in Sources */,
 				44D4079925A8ECAE00ADCB4F /* StageSGammaParameters.swift in Sources */,
 				C02729F72592FDE500E61400 /* StageGroup_Extension.swift in Sources */,
 				C05EA3232593E61300F4D0AD /* StageParameters.swift in Sources */,
 				C05D4AB825B407CB00DD95E1 /* ControllerError.swift in Sources */,
 				C02729DB2592F68E00E61400 /* NiPApp.swift in Sources */,
+				C0F2362825C4B8EE00AA29E5 /* UserSettings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
