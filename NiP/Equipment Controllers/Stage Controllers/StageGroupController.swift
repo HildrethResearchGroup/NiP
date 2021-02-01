@@ -47,11 +47,11 @@ class StageGroupController: EquipmentController {
     @Published var areAnyStagesMoving: Bool = false
     
     private var areAnyStagesMovingPublisher: AnyPublisher<Bool, Never> {
-        Publishers.CombineLatest3(x.$isStageMoving, y.$isStageMoving, z.$isStageMoving)
+        Publishers.CombineLatest3(x.$stageMovingState, y.$stageMovingState, z.$stageMovingState)
             .map { xState, yState, zState in
-                if xState == true { return true }
-                if yState == true { return true }
-                if zState == true { return true }
+                if xState == .moving { return true }
+                if yState == .moving { return true }
+                if zState == .moving { return true }
                 
                 return false
             }

@@ -41,11 +41,14 @@ class StageController: ObservableObject {
         }
     }
     @Published var currentPositionString:String = "??.???"
-    @Published public var currentStageSGammaParameters: StageSGammaParameters = .largeDisplacement
-    @Published public var isStageMoving = false
+    @Published public var currentStageSGammaParameters: StageSGammaParameters = .largeDisplacement {
+        didSet {
+            self.setSGammaParameters(currentStageSGammaParameters)
+        }
+    }
     
     var shouldUpdatStageMovingState = false
-    var stageMovingState: StageMovingState = .notMoving
+    @Published var stageMovingState: StageMovingState = .notMoving
     
     var stageState: StageState {
         get {
@@ -122,7 +125,7 @@ extension StageController {
              }
          */
         // Update state to tell any controllers that the stage is moving.
-        isStageMoving = true
+        stageMovingState = .moving
         
         // Create a future to run the move command
         let future = Future<Void, Error> { promise in
@@ -138,8 +141,9 @@ extension StageController {
         
         // Run the move command through the future and update isStageMoving
         future
+            .receive(on: RunLoop.main)
             .sink(receiveCompletion: {_ in
-                self.isStageMoving = false
+                self.stageMovingState = .notMoving
             }, receiveValue: {_ in
                 print("moveRelative for: \(self.stageName) is done at: \(DispatchTime.now())")
     
@@ -179,7 +183,7 @@ extension StageController {
          */
         
         // Update state to tell any controllers that the stage is moving.
-        isStageMoving = true
+        self.stageMovingState = .moving
         
         // Create a future to run the move command
         let future = Future<Void, Error> { promise in
@@ -196,7 +200,7 @@ extension StageController {
         // Run the move command through the future and update isStageMoving
         future
             .sink(receiveCompletion: {_ in
-                self.isStageMoving = false
+                self.stageMovingState = .notMoving
             }, receiveValue: {_ in
                 print("moveRelative for: \(self.stageName) is done at: \(DispatchTime.now())")
             })

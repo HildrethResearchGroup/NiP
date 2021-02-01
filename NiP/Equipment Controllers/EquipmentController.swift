@@ -10,7 +10,11 @@ import Combine
 
 class EquipmentController: ObservableObject {
     var equipmentName: String
-    @Published var equipmentState: EquipmentState = .notConnected
+    @Published var equipmentState: EquipmentState = .notConnected {
+        didSet {
+            print("EquipmentController - equipmentState = \(equipmentState)")
+        }
+    }
     @Published var connectedToController = false
     var subscriptions: Set<AnyCancellable> = []
     
