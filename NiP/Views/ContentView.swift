@@ -39,7 +39,6 @@ struct ContentView: View {
     
     private var stageViews: some View {
         VStack(alignment: .leading) {
-            //EquipmentConnectView(equipmentController: stageGroupController)
             StagePositionView(stageName: "X",stageController: stageGroupController.x)
             StagePositionView(stageName: "Y", stageController: stageGroupController.y)
             StagePositionView(stageName: "Z", stageController: stageGroupController.z)
@@ -52,7 +51,6 @@ struct ContentView: View {
         Button(action:{self.stageGroupController.connectToEquipmentController()})
         {ZStack {
             Toolbar_XPQ8(equipmentState: $stageGroupController.equipmentState)
-            //Toolbar_XPQ8()
             }
         }.help("Connect \(stageGroupController.equipmentName)")
     }
