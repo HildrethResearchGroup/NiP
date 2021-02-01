@@ -6,7 +6,8 @@
 //
 
 import Foundation
-import SwiftVISA
+
+
 
 
 protocol WaveformController: class {

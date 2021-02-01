@@ -22,7 +22,12 @@ struct ContentView: View {
 
     
     var body: some View {
-        stageViews
+        VStack {
+            Text("Manual Stage Control")
+                .font(.title)
+            stageViews
+        }
+        
         .toolbar{
             ToolbarItem(placement: .primaryAction) {
                 connectToStageControllerToolbarButton
@@ -34,7 +39,7 @@ struct ContentView: View {
     
     private var stageViews: some View {
         VStack(alignment: .leading) {
-            EquipmentConnectView(equipmentController: stageGroupController)
+            //EquipmentConnectView(equipmentController: stageGroupController)
             StagePositionView(stageName: "X",stageController: stageGroupController.x)
             StagePositionView(stageName: "Y", stageController: stageGroupController.y)
             StagePositionView(stageName: "Z", stageController: stageGroupController.z)
@@ -46,7 +51,7 @@ struct ContentView: View {
     private var connectToStageControllerToolbarButton: some View {
         Button(action:{self.stageGroupController.connectToEquipmentController()})
         {ZStack {
-            Toolbar_XPQ8(connectedToController: $stageGroupController.connectedToController)
+            Toolbar_XPQ8(equipmentState: $stageGroupController.equipmentState)
             //Toolbar_XPQ8()
             }
         }.help("Connect \(stageGroupController.equipmentName)")

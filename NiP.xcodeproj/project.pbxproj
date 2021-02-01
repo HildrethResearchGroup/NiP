@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4456EE5825C8AB5800F18A49 /* SwiftVISA.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0DEC02425B60D390052CF7A /* SwiftVISA.framework */; };
+		4456EE5925C8AB5800F18A49 /* SwiftVISA.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C0DEC02425B60D390052CF7A /* SwiftVISA.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		445F25EF25B25479008C6E79 /* SGammaPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445F25EE25B25479008C6E79 /* SGammaPicker.swift */; };
 		446A368425A8D6B100801A84 /* StagePositionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446A368325A8D6B100801A84 /* StagePositionView.swift */; };
 		446A368725A8DB0100801A84 /* NumbersOnly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446A368625A8DB0100801A84 /* NumbersOnly.swift */; };
@@ -29,8 +31,6 @@
 		C0840E9325C66A100024F719 /* PreferencesPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0840E9225C66A100024F719 /* PreferencesPanel.swift */; };
 		C0B06DBD25A6C1D1003F5AE4 /* StageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B06DBC25A6C1D1003F5AE4 /* StageController.swift */; };
 		C0DEC01225B6036E0052CF7A /* WaveformGeneratorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DEC01125B6036E0052CF7A /* WaveformGeneratorController.swift */; };
-		C0DEC02525B60D390052CF7A /* SwiftVISA.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0DEC02425B60D390052CF7A /* SwiftVISA.framework */; };
-		C0DEC02625B60D390052CF7A /* SwiftVISA.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C0DEC02425B60D390052CF7A /* SwiftVISA.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C0E16E4025A8280F004E12B5 /* NotificationKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E16E3F25A8280F004E12B5 /* NotificationKeys.swift */; };
 		C0E16E4425A82F97004E12B5 /* EquipmentConnectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E16E4325A82F97004E12B5 /* EquipmentConnectView.swift */; };
 		C0E16E4825A83138004E12B5 /* Protocol_ConnectableEquipment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E16E4725A83138004E12B5 /* Protocol_ConnectableEquipment.swift */; };
@@ -38,13 +38,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		C0DEC02725B60D390052CF7A /* Embed Frameworks */ = {
+		4456EE5A25C8AB5800F18A49 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				C0DEC02625B60D390052CF7A /* SwiftVISA.framework in Embed Frameworks */,
+				4456EE5925C8AB5800F18A49 /* SwiftVISA.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -89,7 +89,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C02729EF2592F79B00E61400 /* XPSQ8Kit in Frameworks */,
-				C0DEC02525B60D390052CF7A /* SwiftVISA.framework in Frameworks */,
+				4456EE5825C8AB5800F18A49 /* SwiftVISA.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,7 +261,7 @@
 				C02729D32592F68E00E61400 /* Sources */,
 				C02729D42592F68E00E61400 /* Frameworks */,
 				C02729D52592F68E00E61400 /* Resources */,
-				C0DEC02725B60D390052CF7A /* Embed Frameworks */,
+				4456EE5A25C8AB5800F18A49 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -485,6 +485,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(USER_LIBRARY_DIR)/Frameworks",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
 				);
 				INFOPLIST_FILE = NiP/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -513,6 +514,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(USER_LIBRARY_DIR)/Frameworks",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
 				);
 				INFOPLIST_FILE = NiP/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

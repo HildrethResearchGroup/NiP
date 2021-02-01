@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct Toolbar_XPQ8: View {
-    @Binding var connectedToController: Bool
+    //@Binding var connectedToController: Bool
+    @Binding var equipmentState: EquipmentState
     //var connectedToController: Bool = true
     
     var body: some View {
@@ -36,11 +37,13 @@ struct Toolbar_XPQ8: View {
     
     func connectionIndicator() -> some View {
         let color: Color
-        switch connectedToController {
-        case true:
-            color = Color.green
-        default:
+        switch equipmentState {
+        case .notConnected:
             color = Color.red
+        case .busy:
+            color = Color.purple
+        case .idle:
+            color = Color.green
         }
         
         let circleView = Circle()
