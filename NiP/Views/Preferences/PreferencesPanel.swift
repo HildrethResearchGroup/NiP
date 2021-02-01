@@ -47,6 +47,8 @@ struct PreferencesPanel: View {
     }
 }
 
+
+// MARK: - Preview Provider
 struct PreferencesPanel_Previews: PreviewProvider {
     static var previews: some View {
         PreferencesPanel()

@@ -20,6 +20,8 @@ struct SGammaPicker: View {
     }
 }
 
+
+// MARK: - Preview Provider
 /**
 struct SGammaPicker_Previews: PreviewProvider {
     static var previews: some View {

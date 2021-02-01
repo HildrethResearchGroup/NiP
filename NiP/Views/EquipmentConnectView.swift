@@ -63,6 +63,8 @@ struct EquipmentConnectView: View {
     
 }
 
+
+// MARK: - Preview Provider
 struct EquipmentConnectView_Previews: PreviewProvider {
     static var previews: some View {
         let controller = StageGroupController()
