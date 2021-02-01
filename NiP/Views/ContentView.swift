@@ -19,9 +19,20 @@ struct ContentView: View {
         self.waveformController = DCWaveformGeneratorController(identifier: userSettings.waveformIdentifier)
     }
     
-    
+
     
     var body: some View {
+        stageViews
+        .toolbar{
+            ToolbarItem(placement: .primaryAction) {
+                connectToStageControllerToolbarButton
+            }
+        }
+    }
+    
+    
+    
+    private var stageViews: some View {
         VStack(alignment: .leading) {
             EquipmentConnectView(equipmentController: stageGroupController)
             StagePositionView(stageName: "X",stageController: stageGroupController.x)
@@ -30,20 +41,22 @@ struct ContentView: View {
         }
         .fixedSize()
         .padding()
-        .toolbar{
-            ToolbarItem(placement: .primaryAction) {
-
-                Button(action:{self.stageGroupController.connectToEquipmentController()})
-                {ZStack {
-                    Toolbar_XPQ8(connectedToController: $stageGroupController.connectedToController)
-                    //Toolbar_XPQ8()
-                    }
-                }.help("Connect \(stageGroupController.equipmentName)")
-            }
-            //ToolBars(add: {print("add")}, sort: {print("sort")}, filter: {print("afilterdd")})
-        }
     }
+    
+    private var connectToStageControllerToolbarButton: some View {
+        Button(action:{self.stageGroupController.connectToEquipmentController()})
+        {ZStack {
+            Toolbar_XPQ8(connectedToController: $stageGroupController.connectedToController)
+            //Toolbar_XPQ8()
+            }
+        }.help("Connect \(stageGroupController.equipmentName)")
+    }
+    
 }
+
+
+
+
 
 
 // MARK: - Preview Provider
