@@ -8,10 +8,13 @@
 import Foundation
 import Combine
 import SwiftVISA
+//import SwiftVISASwift
 
 // TODOP:  Update didSets ton published values.  Create subscribers.
 
 class DCWaveformGeneratorController: EquipmentController, WaveformController {
+
+    
     // MARK: - Properties
     var identifier: String // = "USB0::0x0957::0x2607::MY52200879::INSTR"
     static var minimumDelay: UInt32 = 2_000_000
@@ -52,7 +55,7 @@ class DCWaveformGeneratorController: EquipmentController, WaveformController {
     // MARK: - Dispatch queue
     
     var dispatchQueue: DispatchQueue? {
-        return instrument?.dispatchQueue
+        return DispatchQueue.global(qos: .userInitiated)
     }
     
     
@@ -71,8 +74,12 @@ class DCWaveformGeneratorController: EquipmentController, WaveformController {
     
     override func connectToEquipmentController() {
         
-        guard let newInstrument = try? InstrumentManager.default?.makeInstrument(identifier: identifier) as? MessageBasedInstrument else {
+        //TODO: Switch over to SwiftVISASwift
+        //guard let newInstrument = try? InstrumentManager.shared.instrumentAt(address: "169.254.5.21", port: 5001) else {
+        
+        guard let newInstrument = try? InstrumentManager.default?.makeInstrument(identifier: "USB0::0x0957::0x2607::MY52200879::INSTR") as? MessageBasedInstrument else {
             print("Could not make waveform generator")
+            print("identifier = \(identifier)")
                 return }
         
         connectedToController = true
@@ -96,10 +103,10 @@ class DCWaveformGeneratorController: EquipmentController, WaveformController {
 
 // MARK: - WaveformController Protocol
 extension DCWaveformGeneratorController {
-    func getIdentifier() throws -> String? {
+    /**func getIdentifier() throws -> String? {
         return try (instrument?.query("*IDN?\n", as: String.self, decoder: StringDecoder()))
     }
-    
+    */
     
     /**
     Set the Impedence of the instrument
@@ -176,6 +183,8 @@ extension DCWaveformGeneratorController  {
 
 // MARK: - Decoders
 extension DCWaveformGeneratorController {
+    // TODO - Fix VISADecoder
+    /**
     private struct StringDecoder: VISADecoder {
         func decode(_ string: String) throws -> String {
             var fixedString = string
@@ -191,5 +200,6 @@ extension DCWaveformGeneratorController {
             return fixedString
         }
     }
+ */
 }
 

@@ -19,7 +19,7 @@ protocol WaveformController: class {
     
     init?(identifier: String, outputChannel: UInt) throws
     
-    func getIdentifier() throws -> String?
+    //func getIdentifier() throws -> String?
     
     func updateImpedence(_ impedenceSetting: ImpedenceSetting) throws
     

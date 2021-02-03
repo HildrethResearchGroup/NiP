@@ -22,7 +22,13 @@ struct ContentView: View {
 
     
     var body: some View {
-       ManualStagePositionView(stageGroupController: stageGroupController)
+        VStack {
+            ManualStagePositionView(stageGroupController: stageGroupController)
+            Divider()
+            ManualWaveformView(waveformController: waveformController)
+                .padding(.bottom)
+        }
+        
     }
     
     

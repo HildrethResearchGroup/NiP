@@ -11,6 +11,24 @@
         }
       },
       {
+        "package": "CoreSwiftVISA",
+        "repositoryURL": "https://github.com/SwiftVISA/CoreSwiftVISA.git",
+        "state": {
+          "branch": null,
+          "revision": "071780d8ff6e3eb02e248692d6d2278440e90e73",
+          "version": "0.1.1"
+        }
+      },
+      {
+        "package": "SwiftVISASwift",
+        "repositoryURL": "https://github.com/SwiftVISA/SwiftVISASwift.git",
+        "state": {
+          "branch": null,
+          "revision": "92a9016f7a40026ba0e2600dabf676f37ac8cc1f",
+          "version": "0.1.0"
+        }
+      },
+      {
         "package": "XPSQ8Kit",
         "repositoryURL": "https://github.com/HildrethResearchGroup/XPSQ8Kit.git",
         "state": {

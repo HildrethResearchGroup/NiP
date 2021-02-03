@@ -17,6 +17,7 @@
 		C006C68725B52F1E00B47256 /* Toolbar_XPQ8.swift in Sources */ = {isa = PBXBuildFile; fileRef = C006C68625B52F1E00B47256 /* Toolbar_XPQ8.swift */; };
 		C018973825CB1E0500DC52B5 /* ManualWaveformView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C018973725CB1E0500DC52B5 /* ManualWaveformView.swift */; };
 		C018973A25CB20A600DC52B5 /* ManualStagePositionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C018973925CB20A600DC52B5 /* ManualStagePositionView.swift */; };
+		C018973D25CB2E9800DC52B5 /* SwiftVISASwift in Frameworks */ = {isa = PBXBuildFile; productRef = C018973C25CB2E9800DC52B5 /* SwiftVISASwift */; };
 		C02729DB2592F68E00E61400 /* NiPApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02729DA2592F68E00E61400 /* NiPApp.swift */; };
 		C02729DD2592F68E00E61400 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02729DC2592F68E00E61400 /* ContentView.swift */; };
 		C02729DF2592F68E00E61400 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C02729DE2592F68E00E61400 /* Assets.xcassets */; };
@@ -92,6 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C018973D25CB2E9800DC52B5 /* SwiftVISASwift in Frameworks */,
 				C02729EF2592F79B00E61400 /* XPSQ8Kit in Frameworks */,
 				4456EE5825C8AB5800F18A49 /* SwiftVISA.framework in Frameworks */,
 			);
@@ -292,6 +294,7 @@
 			name = NiP;
 			packageProductDependencies = (
 				C02729EE2592F79B00E61400 /* XPSQ8Kit */,
+				C018973C25CB2E9800DC52B5 /* SwiftVISASwift */,
 			);
 			productName = NiP;
 			productReference = C02729D72592F68E00E61400 /* NiP.app */;
@@ -322,6 +325,7 @@
 			mainGroup = C02729CE2592F68E00E61400;
 			packageReferences = (
 				C02729ED2592F79B00E61400 /* XCRemoteSwiftPackageReference "XPSQ8Kit" */,
+				C018973B25CB2E9800DC52B5 /* XCRemoteSwiftPackageReference "SwiftVISASwift" */,
 			);
 			productRefGroup = C02729D82592F68E00E61400 /* Products */;
 			projectDirPath = "";
@@ -502,9 +506,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = NiP/NiP.entitlements;
 				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"NiP/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -520,6 +526,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.HRG.NiP;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -531,9 +538,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = NiP/NiP.entitlements;
 				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"NiP/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -548,6 +557,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.HRG.NiP;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
@@ -576,6 +586,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		C018973B25CB2E9800DC52B5 /* XCRemoteSwiftPackageReference "SwiftVISASwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftVISA/SwiftVISASwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.0;
+			};
+		};
 		C02729ED2592F79B00E61400 /* XCRemoteSwiftPackageReference "XPSQ8Kit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/HildrethResearchGroup/XPSQ8Kit.git";
@@ -587,6 +605,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		C018973C25CB2E9800DC52B5 /* SwiftVISASwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C018973B25CB2E9800DC52B5 /* XCRemoteSwiftPackageReference "SwiftVISASwift" */;
+			productName = SwiftVISASwift;
+		};
 		C02729EE2592F79B00E61400 /* XPSQ8Kit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C02729ED2592F79B00E61400 /* XCRemoteSwiftPackageReference "XPSQ8Kit" */;
