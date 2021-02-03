@@ -15,6 +15,8 @@
 		44D4079925A8ECAE00ADCB4F /* StageSGammaParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D4079825A8ECAE00ADCB4F /* StageSGammaParameters.swift */; };
 		C006C68325B5243400B47256 /* ToolBars.swift in Sources */ = {isa = PBXBuildFile; fileRef = C006C68225B5243400B47256 /* ToolBars.swift */; };
 		C006C68725B52F1E00B47256 /* Toolbar_XPQ8.swift in Sources */ = {isa = PBXBuildFile; fileRef = C006C68625B52F1E00B47256 /* Toolbar_XPQ8.swift */; };
+		C018973825CB1E0500DC52B5 /* ManualWaveformView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C018973725CB1E0500DC52B5 /* ManualWaveformView.swift */; };
+		C018973A25CB20A600DC52B5 /* ManualStagePositionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C018973925CB20A600DC52B5 /* ManualStagePositionView.swift */; };
 		C02729DB2592F68E00E61400 /* NiPApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02729DA2592F68E00E61400 /* NiPApp.swift */; };
 		C02729DD2592F68E00E61400 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02729DC2592F68E00E61400 /* ContentView.swift */; };
 		C02729DF2592F68E00E61400 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C02729DE2592F68E00E61400 /* Assets.xcassets */; };
@@ -58,6 +60,8 @@
 		44D4079825A8ECAE00ADCB4F /* StageSGammaParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageSGammaParameters.swift; sourceTree = "<group>"; };
 		C006C68225B5243400B47256 /* ToolBars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolBars.swift; sourceTree = "<group>"; };
 		C006C68625B52F1E00B47256 /* Toolbar_XPQ8.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toolbar_XPQ8.swift; sourceTree = "<group>"; };
+		C018973725CB1E0500DC52B5 /* ManualWaveformView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualWaveformView.swift; sourceTree = "<group>"; };
+		C018973925CB20A600DC52B5 /* ManualStagePositionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualStagePositionView.swift; sourceTree = "<group>"; };
 		C02729D72592F68E00E61400 /* NiP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NiP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C02729DA2592F68E00E61400 /* NiPApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NiPApp.swift; sourceTree = "<group>"; };
 		C02729DC2592F68E00E61400 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -105,6 +109,24 @@
 			path = Toolbar;
 			sourceTree = "<group>";
 		};
+		C018973525CB1D8C00DC52B5 /* Stages */ = {
+			isa = PBXGroup;
+			children = (
+				446A368325A8D6B100801A84 /* StagePositionView.swift */,
+				445F25EE25B25479008C6E79 /* SGammaPicker.swift */,
+				C018973925CB20A600DC52B5 /* ManualStagePositionView.swift */,
+			);
+			path = Stages;
+			sourceTree = "<group>";
+		};
+		C018973625CB1DA100DC52B5 /* Waveform Controller */ = {
+			isa = PBXGroup;
+			children = (
+				C018973725CB1E0500DC52B5 /* ManualWaveformView.swift */,
+			);
+			path = "Waveform Controller";
+			sourceTree = "<group>";
+		};
 		C02729CE2592F68E00E61400 = {
 			isa = PBXGroup;
 			children = (
@@ -125,11 +147,11 @@
 		C02729D92592F68E00E61400 /* NiP */ = {
 			isa = PBXGroup;
 			children = (
+				C02729DA2592F68E00E61400 /* NiPApp.swift */,
 				C0F2362425C4B8BE00AA29E5 /* User Defaults */,
 				C036151C25B6A4D8009A9B59 /* Equipment Controllers */,
 				C0E16E3E25A827FB004E12B5 /* Helper Files */,
 				C02729EC2592F6EC00E61400 /* Views */,
-				C02729DA2592F68E00E61400 /* NiPApp.swift */,
 				C02729DE2592F68E00E61400 /* Assets.xcassets */,
 				C02729E32592F68E00E61400 /* Info.plist */,
 				C02729E42592F68E00E61400 /* NiP.entitlements */,
@@ -160,12 +182,12 @@
 		C02729EC2592F6EC00E61400 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				C0840E8F25C669D10024F719 /* Preferences */,
-				C006C68525B52EF300B47256 /* Toolbar */,
 				C02729DC2592F68E00E61400 /* ContentView.swift */,
+				C0840E8F25C669D10024F719 /* Preferences */,
+				C018973525CB1D8C00DC52B5 /* Stages */,
+				C006C68525B52EF300B47256 /* Toolbar */,
+				C018973625CB1DA100DC52B5 /* Waveform Controller */,
 				C0E16E4325A82F97004E12B5 /* EquipmentConnectView.swift */,
-				446A368325A8D6B100801A84 /* StagePositionView.swift */,
-				445F25EE25B25479008C6E79 /* SGammaPicker.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -174,10 +196,10 @@
 			isa = PBXGroup;
 			children = (
 				C036151E25B6A556009A9B59 /* EquipmentController.swift */,
-				C0E16E4625A8311B004E12B5 /* Protocols and Extensions */,
 				C05D4AB625B407B700DD95E1 /* Errors */,
-				C0DEC01025B603470052CF7A /* Waveform Generator Controllers */,
+				C0E16E4625A8311B004E12B5 /* Protocols and Extensions */,
 				C02729EB2592F6DA00E61400 /* Stage Controllers */,
+				C0DEC01025B603470052CF7A /* Waveform Generator Controllers */,
 			);
 			path = "Equipment Controllers";
 			sourceTree = "<group>";
@@ -330,6 +352,7 @@
 				C0E16E4025A8280F004E12B5 /* NotificationKeys.swift in Sources */,
 				C0DEC01225B6036E0052CF7A /* WaveformGeneratorController.swift in Sources */,
 				445F25EF25B25479008C6E79 /* SGammaPicker.swift in Sources */,
+				C018973825CB1E0500DC52B5 /* ManualWaveformView.swift in Sources */,
 				C0B06DBD25A6C1D1003F5AE4 /* StageController.swift in Sources */,
 				C036151F25B6A556009A9B59 /* EquipmentController.swift in Sources */,
 				446A368425A8D6B100801A84 /* StagePositionView.swift in Sources */,
@@ -341,6 +364,7 @@
 				C0E16E4425A82F97004E12B5 /* EquipmentConnectView.swift in Sources */,
 				C036152225B6AC48009A9B59 /* DCWaveformGeneratorController.swift in Sources */,
 				C02729F22592F7CD00E61400 /* StageGroupController.swift in Sources */,
+				C018973A25CB20A600DC52B5 /* ManualStagePositionView.swift in Sources */,
 				C006C68325B5243400B47256 /* ToolBars.swift in Sources */,
 				C02729DD2592F68E00E61400 /* ContentView.swift in Sources */,
 				C0840E9325C66A100024F719 /* PreferencesPanel.swift in Sources */,
