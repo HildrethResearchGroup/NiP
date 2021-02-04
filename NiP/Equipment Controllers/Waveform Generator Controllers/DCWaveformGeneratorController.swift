@@ -18,6 +18,7 @@ class DCWaveformGeneratorController: EquipmentController, WaveformController {
     // MARK: - Properties
     var identifier: String // = "USB0::0x0957::0x2607::MY52200879::INSTR"
     static var minimumDelay: UInt32 = 2_000_000
+    @Published var targetVoltage = 0.0
     @Published var voltage = 0.0 {
         didSet {
             do {
@@ -26,6 +27,8 @@ class DCWaveformGeneratorController: EquipmentController, WaveformController {
                 print("Error when trying to set voltage")
                 print(error) } }
     }
+    @Published var runTime = 0.0
+    @Published var elapsedTime = 0.0
     private let startupVoltage = 0.0
     private let turnedOffVoltage = 0.0
     private var instrument: MessageBasedInstrument?

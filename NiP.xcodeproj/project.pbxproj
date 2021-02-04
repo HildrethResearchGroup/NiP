@@ -15,6 +15,8 @@
 		44D4079925A8ECAE00ADCB4F /* StageSGammaParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D4079825A8ECAE00ADCB4F /* StageSGammaParameters.swift */; };
 		C006C68325B5243400B47256 /* ToolBars.swift in Sources */ = {isa = PBXBuildFile; fileRef = C006C68225B5243400B47256 /* ToolBars.swift */; };
 		C006C68725B52F1E00B47256 /* Toolbar_XPQ8.swift in Sources */ = {isa = PBXBuildFile; fileRef = C006C68625B52F1E00B47256 /* Toolbar_XPQ8.swift */; };
+		C00D601525CBC109000967C4 /* TextFieldWithLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00D601425CBC109000967C4 /* TextFieldWithLabel.swift */; };
+		C00D601725CBCBCB000967C4 /* Toolbar_waveform.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00D601625CBCBCB000967C4 /* Toolbar_waveform.swift */; };
 		C018973825CB1E0500DC52B5 /* ManualWaveformView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C018973725CB1E0500DC52B5 /* ManualWaveformView.swift */; };
 		C018973A25CB20A600DC52B5 /* ManualStagePositionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C018973925CB20A600DC52B5 /* ManualStagePositionView.swift */; };
 		C018973D25CB2E9800DC52B5 /* SwiftVISASwift in Frameworks */ = {isa = PBXBuildFile; productRef = C018973C25CB2E9800DC52B5 /* SwiftVISASwift */; };
@@ -61,6 +63,8 @@
 		44D4079825A8ECAE00ADCB4F /* StageSGammaParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageSGammaParameters.swift; sourceTree = "<group>"; };
 		C006C68225B5243400B47256 /* ToolBars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolBars.swift; sourceTree = "<group>"; };
 		C006C68625B52F1E00B47256 /* Toolbar_XPQ8.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toolbar_XPQ8.swift; sourceTree = "<group>"; };
+		C00D601425CBC109000967C4 /* TextFieldWithLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithLabel.swift; sourceTree = "<group>"; };
+		C00D601625CBCBCB000967C4 /* Toolbar_waveform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toolbar_waveform.swift; sourceTree = "<group>"; };
 		C018973725CB1E0500DC52B5 /* ManualWaveformView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualWaveformView.swift; sourceTree = "<group>"; };
 		C018973925CB20A600DC52B5 /* ManualStagePositionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualStagePositionView.swift; sourceTree = "<group>"; };
 		C02729D72592F68E00E61400 /* NiP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NiP.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -107,8 +111,17 @@
 			children = (
 				C006C68225B5243400B47256 /* ToolBars.swift */,
 				C006C68625B52F1E00B47256 /* Toolbar_XPQ8.swift */,
+				C00D601625CBCBCB000967C4 /* Toolbar_waveform.swift */,
 			);
 			path = Toolbar;
+			sourceTree = "<group>";
+		};
+		C00D601125CBB68E000967C4 /* Utility Views */ = {
+			isa = PBXGroup;
+			children = (
+				C00D601425CBC109000967C4 /* TextFieldWithLabel.swift */,
+			);
+			path = "Utility Views";
 			sourceTree = "<group>";
 		};
 		C018973525CB1D8C00DC52B5 /* Stages */ = {
@@ -121,12 +134,12 @@
 			path = Stages;
 			sourceTree = "<group>";
 		};
-		C018973625CB1DA100DC52B5 /* Waveform Controller */ = {
+		C018973625CB1DA100DC52B5 /* Waveform Controller Views */ = {
 			isa = PBXGroup;
 			children = (
 				C018973725CB1E0500DC52B5 /* ManualWaveformView.swift */,
 			);
-			path = "Waveform Controller";
+			path = "Waveform Controller Views";
 			sourceTree = "<group>";
 		};
 		C02729CE2592F68E00E61400 = {
@@ -188,7 +201,8 @@
 				C0840E8F25C669D10024F719 /* Preferences */,
 				C018973525CB1D8C00DC52B5 /* Stages */,
 				C006C68525B52EF300B47256 /* Toolbar */,
-				C018973625CB1DA100DC52B5 /* Waveform Controller */,
+				C00D601125CBB68E000967C4 /* Utility Views */,
+				C018973625CB1DA100DC52B5 /* Waveform Controller Views */,
 				C0E16E4325A82F97004E12B5 /* EquipmentConnectView.swift */,
 			);
 			path = Views;
@@ -353,6 +367,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C00D601525CBC109000967C4 /* TextFieldWithLabel.swift in Sources */,
+				C00D601725CBCBCB000967C4 /* Toolbar_waveform.swift in Sources */,
 				C0E16E4025A8280F004E12B5 /* NotificationKeys.swift in Sources */,
 				C0DEC01225B6036E0052CF7A /* WaveformGeneratorController.swift in Sources */,
 				445F25EF25B25479008C6E79 /* SGammaPicker.swift in Sources */,
