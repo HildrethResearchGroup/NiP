@@ -11,12 +11,14 @@ struct ContentView: View {
     let userSettings: UserSettings
     @ObservedObject var stageGroupController: StageGroupController
     @ObservedObject var waveformController: DCWaveformGeneratorController
+    @ObservedObject var printheadController: PrintheadController
     
     init(userSettings: UserSettings) {
         self.userSettings = userSettings
         
         self.stageGroupController  = StageGroupController()
         self.waveformController = DCWaveformGeneratorController(identifier: userSettings.waveformIdentifier)
+        self.printheadController = PrintheadController(equipmentName: "Agilent 33500B")
     }
     
 
@@ -25,7 +27,7 @@ struct ContentView: View {
         VStack {
             ManualStagePositionView(stageGroupController: stageGroupController)
             Divider()
-            ManualWaveformView(waveformController: waveformController)
+            ManualWaveformView(printheadController: printheadController)
                 .padding(.bottom)
         }
         

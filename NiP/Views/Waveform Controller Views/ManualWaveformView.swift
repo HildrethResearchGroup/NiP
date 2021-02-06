@@ -10,7 +10,8 @@ import SwiftUI
 struct ManualWaveformView: View {
     let frameWidthForLeftText = CGFloat(200.0)
     let frameWidthForRightInput = CGFloat(80.0)
-    @ObservedObject var waveformController: DCWaveformGeneratorController
+    //@ObservedObject var waveformController: DCWaveformGeneratorController
+    @ObservedObject var printheadController: PrintheadController
     @State var voltageOn = false
     
     
@@ -23,12 +24,12 @@ struct ManualWaveformView: View {
                 .font(.title)
             connectAndTurnOnView
             HStack {
-                TextFieldWithLabel(labelText: "Printhead Voltage [V]", value: $waveformController.targetVoltage, formaterForValue: configureFormatter())
-                TextFieldWithLabel(labelText: "Waveform Voltage [V]", value: $waveformController.voltage, formaterForValue: configureFormatter())
+                TextFieldWithLabel(labelText: "Printhead Voltage [V]", value: $printheadController.targetVoltage, formaterForValue: configureFormatter())
+                TextFieldWithLabel(labelText: "Waveform Voltage [V]", value: $printheadController.voltage, formaterForValue: configureFormatter())
             }
             HStack {
-                TextFieldWithLabel(labelText: "Run Time [s]", value: $waveformController.runTime, formaterForValue: configureFormatter())
-                TextFieldWithLabel(labelText: "Elapsed Time [s]", value: $waveformController.elapsedTime, formaterForValue: configureFormatter())
+                TextFieldWithLabel(labelText: "Run Time [s]", value: $printheadController.runTime, formaterForValue: configureFormatter())
+                TextFieldWithLabel(labelText: "Elapsed Time [s]", value: $printheadController.elapsedTime, formaterForValue: configureFormatter())
             }
             
 
@@ -40,7 +41,7 @@ struct ManualWaveformView: View {
     var connectAndTurnOnView: some View {
         HStack {
             HStack {
-                EquipmentConnectView(equipmentController: waveformController)
+                EquipmentConnectView(equipmentController: printheadController)
                 
             }
             Toggle("Off/On", isOn: $voltageOn)
@@ -55,11 +56,11 @@ struct ManualWaveformView: View {
     }
     
     private var connectToWaveformControllerToolbarButton: some View {
-        Button(action:{self.waveformController.connectToEquipmentController()})
+        Button(action:{self.printheadController.connectToEquipmentController()})
         {ZStack {
-            Toolbar_waveform(equipmentState: $waveformController.equipmentState)
+            Toolbar_waveform(equipmentState: $printheadController.equipmentState)
             }
-        }.help("Connect \(waveformController.equipmentName)")
+        }.help("Connect \(printheadController.equipmentName)")
     }
     
    
@@ -90,9 +91,10 @@ struct ManualWaveformView_Previews: PreviewProvider {
     static var previews: some View {
         let userSettings = UserSettings()
         let waveformController = DCWaveformGeneratorController(identifier: userSettings.waveformIdentifier)
+        let printHeadController = PrintheadController(equipmentName: "Agilent 33500B")
             
         Group {
-            ManualWaveformView(waveformController: waveformController)
+            ManualWaveformView(printheadController: printHeadController)
                 
         }
     }

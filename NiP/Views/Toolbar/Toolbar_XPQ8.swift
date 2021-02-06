@@ -35,6 +35,7 @@ struct Toolbar_XPQ8: View {
         
     }// END: body
     
+    
     func connectionIndicator() -> some View {
         let color: Color
         switch equipmentState {

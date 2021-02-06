@@ -18,7 +18,7 @@ class DCWaveformGeneratorController: EquipmentController, WaveformController {
     // MARK: - Properties
     var identifier: String // = "USB0::0x0957::0x2607::MY52200879::INSTR"
     static var minimumDelay: UInt32 = 2_000_000
-    @Published var targetVoltage = 0.0
+    
     @Published var voltage = 0.0 {
         didSet {
             do {
@@ -27,8 +27,7 @@ class DCWaveformGeneratorController: EquipmentController, WaveformController {
                 print("Error when trying to set voltage")
                 print(error) } }
     }
-    @Published var runTime = 0.0
-    @Published var elapsedTime = 0.0
+    
     private let startupVoltage = 0.0
     private let turnedOffVoltage = 0.0
     private var instrument: MessageBasedInstrument?
@@ -50,13 +49,12 @@ class DCWaveformGeneratorController: EquipmentController, WaveformController {
                 try updateImpedence(impedence)
             } catch {
                 print("Error when trying to set Impedence")
-                print(error) }
+                print(error)}
         }
     }
     
     
     // MARK: - Dispatch queue
-    
     var dispatchQueue: DispatchQueue? {
         return DispatchQueue.global(qos: .userInitiated)
     }
@@ -106,10 +104,10 @@ class DCWaveformGeneratorController: EquipmentController, WaveformController {
 
 // MARK: - WaveformController Protocol
 extension DCWaveformGeneratorController {
-    /**func getIdentifier() throws -> String? {
+    func getIdentifier() throws -> String? {
         return try (instrument?.query("*IDN?\n", as: String.self, decoder: StringDecoder()))
     }
-    */
+    
     
     /**
     Set the Impedence of the instrument
@@ -117,9 +115,7 @@ extension DCWaveformGeneratorController {
     - Parameter impedenceSetting: enum of the target impedence
     */
     func updateImpedence(_ impedenceSetting: ImpedenceSetting) throws {
-        let outputString = "OUTPUT\(outputChannel)"
-        let impedenceString = impedenceSetting.command()
-        let commandString = outputString + ":" + impedenceString
+        let commandString = impedenceSetting.command(outputChannel)
         try instrument?.write(commandString)  // Example: OUTPUT1:LOAD INF""
     }
     
@@ -186,8 +182,6 @@ extension DCWaveformGeneratorController  {
 
 // MARK: - Decoders
 extension DCWaveformGeneratorController {
-    // TODO - Fix VISADecoder
-    /**
     private struct StringDecoder: VISADecoder {
         func decode(_ string: String) throws -> String {
             var fixedString = string
@@ -203,6 +197,5 @@ extension DCWaveformGeneratorController {
             return fixedString
         }
     }
- */
 }
 
