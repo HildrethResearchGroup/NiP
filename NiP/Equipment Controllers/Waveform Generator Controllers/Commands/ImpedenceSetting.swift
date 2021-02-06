@@ -21,7 +21,7 @@
     setImpedence(.finite(250))
      ````
 */
-enum ImpedenceSetting {
+enum ImpedenceSetting: VISACommand {
     /// Set the instrument's impedence to a standard 50Ω.  This is often used if you are driving a standard circuit.
     case standard
 

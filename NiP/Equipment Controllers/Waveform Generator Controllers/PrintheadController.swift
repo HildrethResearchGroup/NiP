@@ -22,7 +22,7 @@ class PrintheadController: EquipmentController {
     override func connectToEquipmentController() {
         let waveformIdentifier = UserSettings().waveformIdentifier
         
-        dcWaveformGeneratorController = DCWaveformGeneratorController(identifier: waveformIdentifier, outputChannel: 1)
+        dcWaveformGeneratorController = DCWaveformGeneratorController(identifier: waveformIdentifier, outputChannel: .one)
     }
     
     

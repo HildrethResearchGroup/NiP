@@ -11,13 +11,13 @@ import Foundation
 
 
 protocol WaveformController: class {
-    var outputChannel: UInt { get set }
+    var outputChannel: OutputChannel { get set }
     static var minimumDelay: UInt32 { get }
     var waveformType: WaveformType {get set}
     
     var dispatchQueue: DispatchQueue? { get }
     
-    init?(identifier: String, outputChannel: UInt) throws
+    init?(identifier: String, outputChannel: OutputChannel) throws
     
     func getIdentifier() throws -> String?
     

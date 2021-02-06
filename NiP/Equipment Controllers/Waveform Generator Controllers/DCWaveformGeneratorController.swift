@@ -31,7 +31,7 @@ class DCWaveformGeneratorController: EquipmentController, WaveformController {
     private let startupVoltage = 0.0
     private let turnedOffVoltage = 0.0
     private var instrument: MessageBasedInstrument?
-    @Published var outputChannel: UInt
+    @Published var outputChannel: OutputChannel
     @Published var waveformType: WaveformType = .DC {
         didSet {
             do {
@@ -63,7 +63,7 @@ class DCWaveformGeneratorController: EquipmentController, WaveformController {
     
     
     // MARK: - Initializers
-    required init(identifier: String, outputChannel: UInt = 1) {
+    required init(identifier: String, outputChannel: OutputChannel = .one) {
         print("Initilize instrument")
         self.identifier = identifier
         
