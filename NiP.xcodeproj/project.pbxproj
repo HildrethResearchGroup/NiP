@@ -29,13 +29,18 @@
 		C02729F72592FDE500E61400 /* StageGroup_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02729F62592FDE500E61400 /* StageGroup_Extension.swift */; };
 		C036151F25B6A556009A9B59 /* EquipmentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C036151E25B6A556009A9B59 /* EquipmentController.swift */; };
 		C036152225B6AC48009A9B59 /* DCWaveformGeneratorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C036152125B6AC48009A9B59 /* DCWaveformGeneratorController.swift */; };
+		C04A49C725CF8DF3006E70C4 /* ApplyCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04A49C625CF8DF3006E70C4 /* ApplyCommand.swift */; };
+		C04A49CE25D0DE45006E70C4 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04A49CD25D0DE45006E70C4 /* Time.swift */; };
+		C04A49D025D0EA1B006E70C4 /* ChannelOnOffCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04A49CF25D0EA1B006E70C4 /* ChannelOnOffCommand.swift */; };
+		C04A49D325D0F573006E70C4 /* StepFunctionOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04A49D225D0F573006E70C4 /* StepFunctionOperation.swift */; };
+		C04A49D525D0FC09006E70C4 /* OperationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04A49D425D0FC09006E70C4 /* OperationProtocol.swift */; };
+		C04A49D725D0FC90006E70C4 /* OperationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04A49D625D0FC90006E70C4 /* OperationState.swift */; };
 		C05D4AB825B407CB00DD95E1 /* ControllerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05D4AB725B407CB00DD95E1 /* ControllerError.swift */; };
 		C05D4ABC25B4080C00DD95E1 /* StageStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05D4ABB25B4080C00DD95E1 /* StageStatus.swift */; };
 		C05EA3232593E61300F4D0AD /* StageParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05EA3222593E61300F4D0AD /* StageParameters.swift */; };
 		C06AD93B25CE49DB00C64C40 /* PrintheadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06AD93A25CE49DB00C64C40 /* PrintheadController.swift */; };
 		C06AD93E25CE4C3A00C64C40 /* StepFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06AD93D25CE4C3A00C64C40 /* StepFunction.swift */; };
-		C06AD94025CE4E7500C64C40 /* Duration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06AD93F25CE4E7500C64C40 /* Duration.swift */; };
-		C06AD94225CE506900C64C40 /* TimeScale.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06AD94125CE506900C64C40 /* TimeScale.swift */; };
+		C06AD94225CE506900C64C40 /* TimeUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06AD94125CE506900C64C40 /* TimeUnit.swift */; };
 		C06AD94525CE537B00C64C40 /* Protocol_VISACommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06AD94425CE537B00C64C40 /* Protocol_VISACommand.swift */; };
 		C06AD94725CE57C200C64C40 /* WaveformType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06AD94625CE57C200C64C40 /* WaveformType.swift */; };
 		C06AD94925CE57EF00C64C40 /* ImpedenceSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06AD94825CE57EF00C64C40 /* ImpedenceSetting.swift */; };
@@ -44,6 +49,8 @@
 		C0762DDA25AFA26F002370C8 /* String_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0762DD925AFA26F002370C8 /* String_Extension.swift */; };
 		C0840E9325C66A100024F719 /* PreferencesPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0840E9225C66A100024F719 /* PreferencesPanel.swift */; };
 		C0B06DBD25A6C1D1003F5AE4 /* StageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B06DBC25A6C1D1003F5AE4 /* StageController.swift */; };
+		C0C2170D25D1EFA200A1C577 /* OperationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C2170C25D1EFA200A1C577 /* OperationType.swift */; };
+		C0C2170F25D1F61200A1C577 /* VoltageOffsetCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C2170E25D1F61200A1C577 /* VoltageOffsetCommand.swift */; };
 		C0DEC01225B6036E0052CF7A /* WaveformGeneratorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DEC01125B6036E0052CF7A /* WaveformGeneratorController.swift */; };
 		C0E16E4025A8280F004E12B5 /* NotificationKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E16E3F25A8280F004E12B5 /* NotificationKeys.swift */; };
 		C0E16E4425A82F97004E12B5 /* EquipmentConnectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E16E4325A82F97004E12B5 /* EquipmentConnectView.swift */; };
@@ -87,13 +94,18 @@
 		C02729F62592FDE500E61400 /* StageGroup_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageGroup_Extension.swift; sourceTree = "<group>"; };
 		C036151E25B6A556009A9B59 /* EquipmentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentController.swift; sourceTree = "<group>"; };
 		C036152125B6AC48009A9B59 /* DCWaveformGeneratorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCWaveformGeneratorController.swift; sourceTree = "<group>"; };
+		C04A49C625CF8DF3006E70C4 /* ApplyCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyCommand.swift; sourceTree = "<group>"; };
+		C04A49CD25D0DE45006E70C4 /* Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
+		C04A49CF25D0EA1B006E70C4 /* ChannelOnOffCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelOnOffCommand.swift; sourceTree = "<group>"; };
+		C04A49D225D0F573006E70C4 /* StepFunctionOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepFunctionOperation.swift; sourceTree = "<group>"; };
+		C04A49D425D0FC09006E70C4 /* OperationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationProtocol.swift; sourceTree = "<group>"; };
+		C04A49D625D0FC90006E70C4 /* OperationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationState.swift; sourceTree = "<group>"; };
 		C05D4AB725B407CB00DD95E1 /* ControllerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerError.swift; sourceTree = "<group>"; };
 		C05D4ABB25B4080C00DD95E1 /* StageStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageStatus.swift; sourceTree = "<group>"; };
 		C05EA3222593E61300F4D0AD /* StageParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageParameters.swift; sourceTree = "<group>"; };
 		C06AD93A25CE49DB00C64C40 /* PrintheadController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrintheadController.swift; sourceTree = "<group>"; };
 		C06AD93D25CE4C3A00C64C40 /* StepFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepFunction.swift; sourceTree = "<group>"; };
-		C06AD93F25CE4E7500C64C40 /* Duration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Duration.swift; sourceTree = "<group>"; };
-		C06AD94125CE506900C64C40 /* TimeScale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeScale.swift; sourceTree = "<group>"; };
+		C06AD94125CE506900C64C40 /* TimeUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeUnit.swift; sourceTree = "<group>"; };
 		C06AD94425CE537B00C64C40 /* Protocol_VISACommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol_VISACommand.swift; sourceTree = "<group>"; };
 		C06AD94625CE57C200C64C40 /* WaveformType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveformType.swift; sourceTree = "<group>"; };
 		C06AD94825CE57EF00C64C40 /* ImpedenceSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImpedenceSetting.swift; sourceTree = "<group>"; };
@@ -102,6 +114,8 @@
 		C0762DD925AFA26F002370C8 /* String_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String_Extension.swift; sourceTree = "<group>"; };
 		C0840E9225C66A100024F719 /* PreferencesPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesPanel.swift; sourceTree = "<group>"; };
 		C0B06DBC25A6C1D1003F5AE4 /* StageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageController.swift; sourceTree = "<group>"; };
+		C0C2170C25D1EFA200A1C577 /* OperationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationType.swift; sourceTree = "<group>"; };
+		C0C2170E25D1F61200A1C577 /* VoltageOffsetCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoltageOffsetCommand.swift; sourceTree = "<group>"; };
 		C0DEC01125B6036E0052CF7A /* WaveformGeneratorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveformGeneratorController.swift; sourceTree = "<group>"; };
 		C0DEC02425B60D390052CF7A /* SwiftVISA.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftVISA.framework; path = ../../../../../Library/Frameworks/SwiftVISA.framework; sourceTree = "<group>"; };
 		C0E16E3F25A8280F004E12B5 /* NotificationKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationKeys.swift; sourceTree = "<group>"; };
@@ -248,6 +262,40 @@
 			path = "Prot, Etx. Enums";
 			sourceTree = "<group>";
 		};
+		C04A49C525CF8DD6006E70C4 /* VISACommand */ = {
+			isa = PBXGroup;
+			children = (
+				C06AD94C25CE5DD400C64C40 /* CommandBuilder.swift */,
+				C04A49CA25CF917B006E70C4 /* Protocols */,
+				C04A49C625CF8DF3006E70C4 /* ApplyCommand.swift */,
+				C04A49CF25D0EA1B006E70C4 /* ChannelOnOffCommand.swift */,
+				C06AD94825CE57EF00C64C40 /* ImpedenceSetting.swift */,
+				C06AD94A25CE5CF200C64C40 /* OutputChannel.swift */,
+				C06AD94625CE57C200C64C40 /* WaveformType.swift */,
+				C0C2170E25D1F61200A1C577 /* VoltageOffsetCommand.swift */,
+			);
+			path = VISACommand;
+			sourceTree = "<group>";
+		};
+		C04A49CA25CF917B006E70C4 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				C06AD94425CE537B00C64C40 /* Protocol_VISACommand.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		C04A49D125D0F559006E70C4 /* Operations */ = {
+			isa = PBXGroup;
+			children = (
+				C04A49D425D0FC09006E70C4 /* OperationProtocol.swift */,
+				C04A49D625D0FC90006E70C4 /* OperationState.swift */,
+				C0C2170C25D1EFA200A1C577 /* OperationType.swift */,
+				C04A49D225D0F573006E70C4 /* StepFunctionOperation.swift */,
+			);
+			path = Operations;
+			sourceTree = "<group>";
+		};
 		C05D4AB625B407B700DD95E1 /* Errors */ = {
 			isa = PBXGroup;
 			children = (
@@ -259,12 +307,8 @@
 		C06AD93C25CE4C0D00C64C40 /* Commands */ = {
 			isa = PBXGroup;
 			children = (
-				C06AD94C25CE5DD400C64C40 /* CommandBuilder.swift */,
-				C06AD94425CE537B00C64C40 /* Protocol_VISACommand.swift */,
+				C04A49C525CF8DD6006E70C4 /* VISACommand */,
 				C06AD93D25CE4C3A00C64C40 /* StepFunction.swift */,
-				C06AD94625CE57C200C64C40 /* WaveformType.swift */,
-				C06AD94825CE57EF00C64C40 /* ImpedenceSetting.swift */,
-				C06AD94A25CE5CF200C64C40 /* OutputChannel.swift */,
 			);
 			path = Commands;
 			sourceTree = "<group>";
@@ -272,8 +316,8 @@
 		C06AD94325CE509200C64C40 /* Units */ = {
 			isa = PBXGroup;
 			children = (
-				C06AD93F25CE4E7500C64C40 /* Duration.swift */,
-				C06AD94125CE506900C64C40 /* TimeScale.swift */,
+				C06AD94125CE506900C64C40 /* TimeUnit.swift */,
+				C04A49CD25D0DE45006E70C4 /* Time.swift */,
 			);
 			path = Units;
 			sourceTree = "<group>";
@@ -286,12 +330,21 @@
 			path = Preferences;
 			sourceTree = "<group>";
 		};
+		C0C2170B25D1EDB900A1C577 /* Printhead Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Printhead Extensions";
+			sourceTree = "<group>";
+		};
 		C0DEC01025B603470052CF7A /* Waveform Generator Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				C06AD93C25CE4C0D00C64C40 /* Commands */,
-				C0DEC01125B6036E0052CF7A /* WaveformGeneratorController.swift */,
+				C0C2170B25D1EDB900A1C577 /* Printhead Extensions */,
+				C04A49D125D0F559006E70C4 /* Operations */,
 				C036152125B6AC48009A9B59 /* DCWaveformGeneratorController.swift */,
+				C0DEC01125B6036E0052CF7A /* WaveformGeneratorController.swift */,
 				C06AD93A25CE49DB00C64C40 /* PrintheadController.swift */,
 			);
 			path = "Waveform Generator Controllers";
@@ -414,33 +467,40 @@
 				C00D601725CBCBCB000967C4 /* Toolbar_waveform.swift in Sources */,
 				C0E16E4025A8280F004E12B5 /* NotificationKeys.swift in Sources */,
 				C0DEC01225B6036E0052CF7A /* WaveformGeneratorController.swift in Sources */,
+				C0C2170F25D1F61200A1C577 /* VoltageOffsetCommand.swift in Sources */,
 				445F25EF25B25479008C6E79 /* SGammaPicker.swift in Sources */,
 				C06AD94925CE57EF00C64C40 /* ImpedenceSetting.swift in Sources */,
 				C018973825CB1E0500DC52B5 /* ManualWaveformView.swift in Sources */,
 				C0B06DBD25A6C1D1003F5AE4 /* StageController.swift in Sources */,
 				C036151F25B6A556009A9B59 /* EquipmentController.swift in Sources */,
+				C04A49D725D0FC90006E70C4 /* OperationState.swift in Sources */,
 				446A368425A8D6B100801A84 /* StagePositionView.swift in Sources */,
 				C05D4ABC25B4080C00DD95E1 /* StageStatus.swift in Sources */,
-				C06AD94225CE506900C64C40 /* TimeScale.swift in Sources */,
+				C06AD94225CE506900C64C40 /* TimeUnit.swift in Sources */,
 				C0762DDA25AFA26F002370C8 /* String_Extension.swift in Sources */,
 				C006C68725B52F1E00B47256 /* Toolbar_XPQ8.swift in Sources */,
 				446A368725A8DB0100801A84 /* NumbersOnly.swift in Sources */,
 				C06AD94725CE57C200C64C40 /* WaveformType.swift in Sources */,
 				C0E16E4825A83138004E12B5 /* Protocol_ConnectableEquipment.swift in Sources */,
 				C0E16E4425A82F97004E12B5 /* EquipmentConnectView.swift in Sources */,
-				C06AD94025CE4E7500C64C40 /* Duration.swift in Sources */,
 				C036152225B6AC48009A9B59 /* DCWaveformGeneratorController.swift in Sources */,
+				C04A49CE25D0DE45006E70C4 /* Time.swift in Sources */,
 				C02729F22592F7CD00E61400 /* StageGroupController.swift in Sources */,
 				C018973A25CB20A600DC52B5 /* ManualStagePositionView.swift in Sources */,
 				C006C68325B5243400B47256 /* ToolBars.swift in Sources */,
 				C02729DD2592F68E00E61400 /* ContentView.swift in Sources */,
+				C0C2170D25D1EFA200A1C577 /* OperationType.swift in Sources */,
 				C0840E9325C66A100024F719 /* PreferencesPanel.swift in Sources */,
 				C06AD93E25CE4C3A00C64C40 /* StepFunction.swift in Sources */,
+				C04A49D025D0EA1B006E70C4 /* ChannelOnOffCommand.swift in Sources */,
 				C06AD94525CE537B00C64C40 /* Protocol_VISACommand.swift in Sources */,
 				44D4079925A8ECAE00ADCB4F /* StageSGammaParameters.swift in Sources */,
+				C04A49D525D0FC09006E70C4 /* OperationProtocol.swift in Sources */,
+				C04A49C725CF8DF3006E70C4 /* ApplyCommand.swift in Sources */,
 				C06AD94B25CE5CF200C64C40 /* OutputChannel.swift in Sources */,
 				C06AD94D25CE5DD400C64C40 /* CommandBuilder.swift in Sources */,
 				C02729F72592FDE500E61400 /* StageGroup_Extension.swift in Sources */,
+				C04A49D325D0F573006E70C4 /* StepFunctionOperation.swift in Sources */,
 				C05EA3232593E61300F4D0AD /* StageParameters.swift in Sources */,
 				C06AD93B25CE49DB00C64C40 /* PrintheadController.swift in Sources */,
 				C05D4AB825B407CB00DD95E1 /* ControllerError.swift in Sources */,

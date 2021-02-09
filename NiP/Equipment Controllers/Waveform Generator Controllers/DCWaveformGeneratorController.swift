@@ -30,7 +30,7 @@ class DCWaveformGeneratorController: EquipmentController, WaveformController {
     
     private let startupVoltage = 0.0
     private let turnedOffVoltage = 0.0
-    private var instrument: MessageBasedInstrument?
+    var instrument: MessageBasedInstrument?
     @Published var outputChannel: OutputChannel
     @Published var waveformType: WaveformType = .DC {
         didSet {
@@ -134,6 +134,10 @@ extension DCWaveformGeneratorController {
         try instrument?.write("SOURce\(outputChannel):\(waveformCommand)")
     }
     
+    func write(_ commandString: String) throws {
+        try instrument?.write(commandString)
+    }
+    
 }
 
 // MARK: - Running the Waveform
@@ -154,7 +158,6 @@ extension DCWaveformGeneratorController  {
         
         
         // Have stopWaveform run after runLength
-        
         DispatchQueue.main.asyncAfter(deadline: runLength, execute: {
             self.stopWaveform()
             } as @convention(block) () -> Void)

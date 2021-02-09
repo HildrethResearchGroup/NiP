@@ -16,7 +16,38 @@
              let command = CommandBuilder.command([outputChannel, waveform])
              // returns: SOURce1:FUNCtion DC
  */
-class CommandBuilder {
+struct CommandBuilder: VISACommand {
+    
+    var commands: [VISACommand]
+    
+    init(_ commandsIn: [VISACommand]) {
+        commands = commandsIn
+    }
+    
+    
+    
+    /**
+     Takes an array of objects conforming to the VISACommand protocol and composes a command string combining all of the command strings from the objects.
+     
+     This command __CAN__ be used directly.  The commands will be ordered in the same order that the VISACommand array is.
+     
+     - Returns
+        - A string containing the VISA command to set the type of waveform to generate
+     
+     
+    ### Usage Example: ###
+            let outputChannel = OutputChannel.one
+            let waveform = WaveformType.DC
+            let commandBuilder = CommandBuilder([outputChannel, waveform])
+         
+            let command = commandBuilder.command()
+            // returns: SOURce1:FUNCtion DC
+    */
+    func command() -> String {
+        return CommandBuilder.command(commands)
+    }
+    
+    
     
     /**
      Takes an array of objects conforming to the VISACommand protocol and composes a command string combining all of the command strings from the objects.
