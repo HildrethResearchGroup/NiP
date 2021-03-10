@@ -17,6 +17,11 @@
 		C006C68725B52F1E00B47256 /* Toolbar_XPQ8.swift in Sources */ = {isa = PBXBuildFile; fileRef = C006C68625B52F1E00B47256 /* Toolbar_XPQ8.swift */; };
 		C00D601525CBC109000967C4 /* TextFieldWithLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00D601425CBC109000967C4 /* TextFieldWithLabel.swift */; };
 		C00D601725CBCBCB000967C4 /* Toolbar_waveform.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00D601625CBCBCB000967C4 /* Toolbar_waveform.swift */; };
+		C016576525F97530003E093B /* DisclosureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C016576025F9752F003E093B /* DisclosureView.swift */; };
+		C016576625F97530003E093B /* DisclosureDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C016576125F9752F003E093B /* DisclosureDetailView.swift */; };
+		C016576725F97530003E093B /* Extension_View_Hidden.swift in Sources */ = {isa = PBXBuildFile; fileRef = C016576225F97530003E093B /* Extension_View_Hidden.swift */; };
+		C016576825F97530003E093B /* DisclosurePrimaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C016576325F97530003E093B /* DisclosurePrimaryView.swift */; };
+		C016576925F97530003E093B /* DisclosureIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C016576425F97530003E093B /* DisclosureIndicator.swift */; };
 		C018973825CB1E0500DC52B5 /* ManualWaveformView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C018973725CB1E0500DC52B5 /* ManualWaveformView.swift */; };
 		C018973A25CB20A600DC52B5 /* ManualStagePositionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C018973925CB20A600DC52B5 /* ManualStagePositionView.swift */; };
 		C018973D25CB2E9800DC52B5 /* SwiftVISASwift in Frameworks */ = {isa = PBXBuildFile; productRef = C018973C25CB2E9800DC52B5 /* SwiftVISASwift */; };
@@ -81,6 +86,11 @@
 		C006C68625B52F1E00B47256 /* Toolbar_XPQ8.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toolbar_XPQ8.swift; sourceTree = "<group>"; };
 		C00D601425CBC109000967C4 /* TextFieldWithLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithLabel.swift; sourceTree = "<group>"; };
 		C00D601625CBCBCB000967C4 /* Toolbar_waveform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toolbar_waveform.swift; sourceTree = "<group>"; };
+		C016576025F9752F003E093B /* DisclosureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisclosureView.swift; sourceTree = "<group>"; };
+		C016576125F9752F003E093B /* DisclosureDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisclosureDetailView.swift; sourceTree = "<group>"; };
+		C016576225F97530003E093B /* Extension_View_Hidden.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension_View_Hidden.swift; sourceTree = "<group>"; };
+		C016576325F97530003E093B /* DisclosurePrimaryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisclosurePrimaryView.swift; sourceTree = "<group>"; };
+		C016576425F97530003E093B /* DisclosureIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisclosureIndicator.swift; sourceTree = "<group>"; };
 		C018973725CB1E0500DC52B5 /* ManualWaveformView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualWaveformView.swift; sourceTree = "<group>"; };
 		C018973925CB20A600DC52B5 /* ManualStagePositionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualStagePositionView.swift; sourceTree = "<group>"; };
 		C02729D72592F68E00E61400 /* NiP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NiP.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -156,6 +166,26 @@
 			path = "Utility Views";
 			sourceTree = "<group>";
 		};
+		C016575C25F974E3003E093B /* Operation Views */ = {
+			isa = PBXGroup;
+			children = (
+				C016575F25F97520003E093B /* Custom Disclosure View */,
+			);
+			path = "Operation Views";
+			sourceTree = "<group>";
+		};
+		C016575F25F97520003E093B /* Custom Disclosure View */ = {
+			isa = PBXGroup;
+			children = (
+				C016576125F9752F003E093B /* DisclosureDetailView.swift */,
+				C016576425F97530003E093B /* DisclosureIndicator.swift */,
+				C016576325F97530003E093B /* DisclosurePrimaryView.swift */,
+				C016576025F9752F003E093B /* DisclosureView.swift */,
+				C016576225F97530003E093B /* Extension_View_Hidden.swift */,
+			);
+			path = "Custom Disclosure View";
+			sourceTree = "<group>";
+		};
 		C018973525CB1D8C00DC52B5 /* Stages */ = {
 			isa = PBXGroup;
 			children = (
@@ -229,6 +259,7 @@
 		C02729EC2592F6EC00E61400 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C016575C25F974E3003E093B /* Operation Views */,
 				C02729DC2592F68E00E61400 /* ContentView.swift */,
 				C0840E8F25C669D10024F719 /* Preferences */,
 				C018973525CB1D8C00DC52B5 /* Stages */,
@@ -471,10 +502,13 @@
 				445F25EF25B25479008C6E79 /* SGammaPicker.swift in Sources */,
 				C06AD94925CE57EF00C64C40 /* ImpedenceSetting.swift in Sources */,
 				C018973825CB1E0500DC52B5 /* ManualWaveformView.swift in Sources */,
+				C016576625F97530003E093B /* DisclosureDetailView.swift in Sources */,
 				C0B06DBD25A6C1D1003F5AE4 /* StageController.swift in Sources */,
 				C036151F25B6A556009A9B59 /* EquipmentController.swift in Sources */,
 				C04A49D725D0FC90006E70C4 /* OperationState.swift in Sources */,
+				C016576725F97530003E093B /* Extension_View_Hidden.swift in Sources */,
 				446A368425A8D6B100801A84 /* StagePositionView.swift in Sources */,
+				C016576925F97530003E093B /* DisclosureIndicator.swift in Sources */,
 				C05D4ABC25B4080C00DD95E1 /* StageStatus.swift in Sources */,
 				C06AD94225CE506900C64C40 /* TimeUnit.swift in Sources */,
 				C0762DDA25AFA26F002370C8 /* String_Extension.swift in Sources */,
@@ -482,8 +516,10 @@
 				446A368725A8DB0100801A84 /* NumbersOnly.swift in Sources */,
 				C06AD94725CE57C200C64C40 /* WaveformType.swift in Sources */,
 				C0E16E4825A83138004E12B5 /* Protocol_ConnectableEquipment.swift in Sources */,
+				C016576525F97530003E093B /* DisclosureView.swift in Sources */,
 				C0E16E4425A82F97004E12B5 /* EquipmentConnectView.swift in Sources */,
 				C036152225B6AC48009A9B59 /* DCWaveformGeneratorController.swift in Sources */,
+				C016576825F97530003E093B /* DisclosurePrimaryView.swift in Sources */,
 				C04A49CE25D0DE45006E70C4 /* Time.swift in Sources */,
 				C02729F22592F7CD00E61400 /* StageGroupController.swift in Sources */,
 				C018973A25CB20A600DC52B5 /* ManualStagePositionView.swift in Sources */,
