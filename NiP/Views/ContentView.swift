@@ -24,12 +24,19 @@ struct ContentView: View {
 
     
     var body: some View {
-        VStack {
-            ManualStagePositionView(stageGroupController: stageGroupController)
-            Divider()
-            ManualWaveformView(printheadController: printheadController)
-                .padding(.bottom)
-        }
+        HSplitView {
+            VStack {
+                DisclosureView()
+                DisclosureView()
+            }.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+            .layoutPriority(1)
+            VStack {
+                ManualStagePositionView(stageGroupController: stageGroupController)
+                Divider()
+                ManualWaveformView(printheadController: printheadController)
+                    .padding(.bottom)
+            }.frame(maxHeight: .infinity, alignment: .top)
+        }.frame(maxWidth: .infinity, maxHeight: .infinity)
         
     }//END - body
 

@@ -16,20 +16,24 @@ struct Toolbar_waveform: View {
             connectionIndicator()
                 .offset(x: -16, y: -8)
             Image(systemName: "bolt.fill")
-                .offset(x: 6, y: -3)
+                .offset(x: 0, y: -3)
                 .foregroundColor(.yellow)
-            Path{ path in
-                path.move(to: CGPoint(x: 15.81, y: 0))
-                path.addLine(to: CGPoint(x: 15.81, y: 13.45))
-                path.addLine(to: CGPoint(x: 31, y: 13.45))
-            }
-                .stroke(Color.gray, lineWidth: 1)
-                .offset(x: -1, y: 5)
+            
             Text("Waveform")
                 .font(.system(size: 7))
                 .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                 .offset(x: 0, y: 8)
         }.frame(width: 40, height: 25, alignment: .center)
+    }
+    
+    func axisPath() -> some View {
+        Path{ path in
+            path.move(to: CGPoint(x: 15.81, y: 0))
+            path.addLine(to: CGPoint(x: 15.81, y: 13.45))
+            path.addLine(to: CGPoint(x: 31, y: 13.45))
+        }
+            .stroke(Color.gray, lineWidth: 1)
+            .offset(x: -1, y: 5)
     }
     
     func connectionIndicator() -> some View {
