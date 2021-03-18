@@ -7,5 +7,6 @@
 
 protocol Operation {
     var state: OperationState {get set}
+    var enabled: Bool {get set}
     var operationType: OperationType { get }
 }

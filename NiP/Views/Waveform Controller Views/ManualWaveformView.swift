@@ -20,9 +20,26 @@ struct ManualWaveformView: View {
     
     var body: some View {
         VStack {
-            Text("Manual Voltage Control")
-                .font(.title)
-            connectAndTurnOnView
+            ZStack {
+                HStack{
+                    Spacer()
+                    Text("Manual Voltage Control")
+                        .font(.title)
+                    Spacer()
+                }
+                HStack{
+                    Spacer()
+                    Toggle("Off/On", isOn: $voltageOn)
+                        .toggleStyle(SwitchToggleStyle())
+                        .padding(.leading)
+                }.toolbar(content: {
+                    ToolbarItem(placement: .primaryAction) {
+                        connectToWaveformControllerToolbarButton
+                    }
+                })
+                
+            }
+            //connectAndTurnOnView
             HStack {
                 TextFieldWithLabel(labelText: "Printhead Voltage [V]", value: $printheadController.targetVoltage, formaterForValue: configureFormatter())
                 TextFieldWithLabel(labelText: "Waveform Voltage [V]", value: $printheadController.voltage, formaterForValue: configureFormatter())
@@ -89,8 +106,8 @@ extension HorizontalAlignment {
 // MARK: - Preview Provider
 struct ManualWaveformView_Previews: PreviewProvider {
     static var previews: some View {
-        let userSettings = UserSettings()
-        let waveformController = DCWaveformGeneratorController(identifier: userSettings.waveformIdentifier)
+        //let userSettings = UserSettings()
+        //let waveformController = DCWaveformGeneratorController(identifier: userSettings.waveformIdentifier)
         let printHeadController = PrintheadController(equipmentName: "Agilent 33500B")
             
         Group {

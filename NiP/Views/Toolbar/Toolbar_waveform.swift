@@ -18,6 +18,7 @@ struct Toolbar_waveform: View {
             Image(systemName: "bolt.fill")
                 .offset(x: 0, y: -3)
                 .foregroundColor(.yellow)
+                .rotationEffect(.init(degrees: 25.0))
             
             Text("Waveform")
                 .font(.system(size: 7))

@@ -54,6 +54,7 @@
 		C0762DDA25AFA26F002370C8 /* String_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0762DD925AFA26F002370C8 /* String_Extension.swift */; };
 		C0840E9325C66A100024F719 /* PreferencesPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0840E9225C66A100024F719 /* PreferencesPanel.swift */; };
 		C0B06DBD25A6C1D1003F5AE4 /* StageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B06DBC25A6C1D1003F5AE4 /* StageController.swift */; };
+		C0BB8F7826030094003F36A8 /* OperatorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BB8F7726030094003F36A8 /* OperatorController.swift */; };
 		C0C2170D25D1EFA200A1C577 /* OperationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C2170C25D1EFA200A1C577 /* OperationType.swift */; };
 		C0C2170F25D1F61200A1C577 /* VoltageOffsetCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C2170E25D1F61200A1C577 /* VoltageOffsetCommand.swift */; };
 		C0DEC01225B6036E0052CF7A /* WaveformGeneratorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DEC01125B6036E0052CF7A /* WaveformGeneratorController.swift */; };
@@ -124,6 +125,7 @@
 		C0762DD925AFA26F002370C8 /* String_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String_Extension.swift; sourceTree = "<group>"; };
 		C0840E9225C66A100024F719 /* PreferencesPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesPanel.swift; sourceTree = "<group>"; };
 		C0B06DBC25A6C1D1003F5AE4 /* StageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageController.swift; sourceTree = "<group>"; };
+		C0BB8F7726030094003F36A8 /* OperatorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperatorController.swift; sourceTree = "<group>"; };
 		C0C2170C25D1EFA200A1C577 /* OperationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationType.swift; sourceTree = "<group>"; };
 		C0C2170E25D1F61200A1C577 /* VoltageOffsetCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoltageOffsetCommand.swift; sourceTree = "<group>"; };
 		C0DEC01125B6036E0052CF7A /* WaveformGeneratorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveformGeneratorController.swift; sourceTree = "<group>"; };
@@ -186,14 +188,14 @@
 			path = "Custom Disclosure View";
 			sourceTree = "<group>";
 		};
-		C018973525CB1D8C00DC52B5 /* Stages */ = {
+		C018973525CB1D8C00DC52B5 /* Stage Controller View */ = {
 			isa = PBXGroup;
 			children = (
 				446A368325A8D6B100801A84 /* StagePositionView.swift */,
 				445F25EE25B25479008C6E79 /* SGammaPicker.swift */,
 				C018973925CB20A600DC52B5 /* ManualStagePositionView.swift */,
 			);
-			path = Stages;
+			path = "Stage Controller View";
 			sourceTree = "<group>";
 		};
 		C018973625CB1DA100DC52B5 /* Waveform Controller Views */ = {
@@ -226,6 +228,7 @@
 			children = (
 				C02729DA2592F68E00E61400 /* NiPApp.swift */,
 				C0F2362425C4B8BE00AA29E5 /* User Defaults */,
+				C0BB8F762603007D003F36A8 /* Operators */,
 				C036151C25B6A4D8009A9B59 /* Equipment Controllers */,
 				C0E16E3E25A827FB004E12B5 /* Helper Files */,
 				C02729EC2592F6EC00E61400 /* Views */,
@@ -262,7 +265,7 @@
 				C016575C25F974E3003E093B /* Operation Views */,
 				C02729DC2592F68E00E61400 /* ContentView.swift */,
 				C0840E8F25C669D10024F719 /* Preferences */,
-				C018973525CB1D8C00DC52B5 /* Stages */,
+				C018973525CB1D8C00DC52B5 /* Stage Controller View */,
 				C006C68525B52EF300B47256 /* Toolbar */,
 				C00D601125CBB68E000967C4 /* Utility Views */,
 				C018973625CB1DA100DC52B5 /* Waveform Controller Views */,
@@ -361,6 +364,15 @@
 			path = Preferences;
 			sourceTree = "<group>";
 		};
+		C0BB8F762603007D003F36A8 /* Operators */ = {
+			isa = PBXGroup;
+			children = (
+				C0BB8F7726030094003F36A8 /* OperatorController.swift */,
+				C04A49D125D0F559006E70C4 /* Operations */,
+			);
+			path = Operators;
+			sourceTree = "<group>";
+		};
 		C0C2170B25D1EDB900A1C577 /* Printhead Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -373,7 +385,6 @@
 			children = (
 				C06AD93C25CE4C0D00C64C40 /* Commands */,
 				C0C2170B25D1EDB900A1C577 /* Printhead Extensions */,
-				C04A49D125D0F559006E70C4 /* Operations */,
 				C036152125B6AC48009A9B59 /* DCWaveformGeneratorController.swift */,
 				C0DEC01125B6036E0052CF7A /* WaveformGeneratorController.swift */,
 				C06AD93A25CE49DB00C64C40 /* PrintheadController.swift */,
@@ -519,6 +530,7 @@
 				C016576525F97530003E093B /* DisclosureView.swift in Sources */,
 				C0E16E4425A82F97004E12B5 /* EquipmentConnectView.swift in Sources */,
 				C036152225B6AC48009A9B59 /* DCWaveformGeneratorController.swift in Sources */,
+				C0BB8F7826030094003F36A8 /* OperatorController.swift in Sources */,
 				C016576825F97530003E093B /* DisclosurePrimaryView.swift in Sources */,
 				C04A49CE25D0DE45006E70C4 /* Time.swift in Sources */,
 				C02729F22592F7CD00E61400 /* StageGroupController.swift in Sources */,
